@@ -1,0 +1,1 @@
+<?php/*connexion a la BDD*/try{    $bdd = new PDO('mysql:host=46.105.171.70;dbname=pierreba_bde', 'pierreba_bde', 'bdeSIO2', array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));}catch (Exception $e){    die('Erreur : ' . $e->getMessage());}?>
