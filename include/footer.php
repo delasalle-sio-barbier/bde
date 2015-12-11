@@ -5,6 +5,10 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="lp-element">
+                        <a href="https://www.facebook.com/bde.lycee.dls/" target="_blank"><img src="/images/fb_icone.png" alt="facebook" width="200" height="200" border="0" /></a>
+                        <a href="https://www.facebook.com/bde.lycee.dls/" target="_blank"><img src="/images/tw_icone.png" alt="twitter" width="200" height="200" border="0" /></a>
+                        <!-- PAS DE PAGE TWITTER -->
+
                         BDE<br>
                         Bienvenue sur le site de l'organisation BDE du Lycée De La Salle.<br>Ce site vous permet d'être informé des différentes informations vous concernant. A MODIFIER
                     </div>
