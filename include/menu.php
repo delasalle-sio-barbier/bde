@@ -2,7 +2,7 @@
     <div class="container">
         <div class="navbar-header">
             <!-- Your Logo -->
-            <a class="navbar-brand">BDE - <span class="lighter">Lycée De La Salle</span></a>
+            <a class="navbar-brand" href="menu.php">BDE - <span class="lighter">Lycée De La Salle</span></a>
         </div>
         <!-- Start Navigation -->
         <nav class="navbar-collapse bs-navbar-collapse navbar-right" role="navigation">

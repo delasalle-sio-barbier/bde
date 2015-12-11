@@ -16,7 +16,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    Mettre google maps avec plan lycée (idée)
+                    <iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"width="400" height="350" src="https://maps.google.com/maps?hl=en&q=5 Rue de la Motte Brûlon&ie=UTF8&t=k&z=17&iwloc=B&output=embed"><div><small><a href="http://embedgooglemaps.com">embedgooglemaps.com</a></small></div><div><small><a href="http://www.ultimatewebtraffic.com">Buy website traffic</a></small></div></iframe>
                 </div>
             </div>
         </div>
