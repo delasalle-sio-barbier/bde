@@ -16,13 +16,13 @@
                 if (strstr($_SERVER['REQUEST_URI'], '/membre/')){
                     echo '<li><a href="../index.php">Accueil</a></li>';
                     echo '<li><a href="../news.php">News</a></li>';
-                    echo '<li><a href="../agenda.php">Agenda</a></li>';
+                    echo '<li><a href="../evenement.php">Evenements</a></li>';
                     echo '<li><a href="../galerie.php">Galerie</a></li>';
                     echo '<li><a href="../contact.php">Contact</a></li>';
                 } else {
                     echo '<li><a href="index.php">Accueil</a></li>';
                     echo '<li><a href="news.php">News</a></li>';
-                    echo '<li><a href="agenda.php">Agenda</a></li>';
+                    echo '<li><a href="evenement.php">Evenements</a></li>';
                     echo '<li><a href="galerie.php">Galerie</a></li>';
                     echo '<li><a href="contact.php">Contact</a></li>';
                 }

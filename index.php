@@ -57,7 +57,7 @@ End Hero -->
             </div>
             <div class="col-md-6">
                 <div class="lp-element">
-                    <h1>Agenda<br></h1>
+                    <h1>Evenements<br></h1>
                     <?php
                     $requete = 'SELECT numEvenement, titre, texte, lieu, dateDebut, dateFin FROM evenement LIMIT 3';
                     $req = $bdd->prepare($requete);
