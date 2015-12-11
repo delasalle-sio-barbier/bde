@@ -38,7 +38,7 @@ End Hero -->
                 <div class="lp-element">
                     <h1>News<br></h1>
                     <?php
-                    $requete = 'SELECT numNews, titre, texte, date FROM news LIMIT 3';
+                    $requete = 'SELECT numNews, titre, texte, date FROM news ORDER BY date DESC LIMIT 3';
                     $req = $bdd->prepare($requete);
                     $req->execute();
                     while ($row = $req->fetch()) {
@@ -59,7 +59,7 @@ End Hero -->
                 <div class="lp-element">
                     <h1>Evenements<br></h1>
                     <?php
-                    $requete = 'SELECT numEvenement, titre, texte, lieu, dateDebut, dateFin FROM evenement LIMIT 3';
+                    $requete = 'SELECT numEvenement, titre, texte, lieu, dateDebut, dateFin FROM evenement ORDER BY numEvenement DESC LIMIT 3';
                     $req = $bdd->prepare($requete);
                     $req->execute();
                     while ($row = $req->fetch()) {
@@ -95,31 +95,27 @@ End Contenu -->
                     <div class="row">
                         <div class="col-xs-offset-3 col-xs-6">
                             <div class="carousel-inner">
-                                <div class="item active">
-                                    <div class="carousel-content">
-                                        <div>
-                                            <h3>Titre1</h3>
-                                            <p>Boite à idée1</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="carousel-content">
-                                        <div>
-                                            <h3>Titre2</h3>
-                                            <p>Boite à idée2</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="carousel-content">
-                                        <div>
-                                            <h3>Titre3</h3>
-                                            <p>Boite à idée3</p>
-                                        </div>
-                                    </div>
-                                </div>
-
+                                <?php
+                                $requete = 'SELECT numIdee, numMembre, titre, texte, date FROM idee';
+                                $req = $bdd->prepare($requete);
+                                $req->execute();
+                                $compteur = 0;
+                                while ($row = $req->fetch()) {
+                                    if ($compteur == 0)
+                                        echo '<div class="item active">';
+                                    else
+                                        echo '<div class="item">';
+                                    echo '  <div class="carousel-content">';
+                                    echo '      <div>';
+                                    echo "          <h3>".$row['titre']."</h3>";
+                                    echo "          <p>".$row['texte']."</p>";
+                                    echo '      </div>';
+                                    echo '  </div>';
+                                    echo '</div>';
+                                    $compteur++;
+                                }
+                                $req->closeCursor();
+                                ?>
                             </div>
                         </div>
                     </div>
