@@ -108,10 +108,10 @@ pre {
     outline: none;
 }
 .btn-link {
-    color: #1abc9c;
+    color: #fed84f;
 }
 .btn-link:hover, .btn-link:focus {
-    color: #16a085;
+    color: #fed84f;
 }
 .btn-default, .label-default {
     background-color: #FFF;
@@ -381,7 +381,7 @@ label {
     font-weight: bold;
 }
 .navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
-    color: #000;
+    color: #6399cd;
 }
 .navbar-inverse {
     background-color: #FFF;
@@ -405,7 +405,7 @@ label {
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:hover, .navbar-inverse .navbar-nav>.active>a:focus {
     background-color: transparent;
     background-color: rgba(255, 255, 255, 0);
-    color: #E3530A;
+    color: #fed84f;
 }
 .header-button {
     margin-left: 15px;
