@@ -2,7 +2,7 @@
 <?php include('include/menu.php'); ?>
     <div class="container">
         <?php
-        if (!empty($_SESSION['id'])) //les membres doivent êtres connectés
+        if (!empty($_SESSION['numMembre'])) //les membres doivent êtres connectés
         {
             /* il faut que toutes les variables du formulaire existent*/
             if(isset($_POST['titre']) && isset($_POST['email']) && isset($_POST['message'])) {

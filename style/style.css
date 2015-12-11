@@ -1,8 +1,8 @@
 body {
-    color: #1E2024;
+    background-color: #ebebeb;
+    color: #6399cd;
     font: normal 18px "Dosis", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 300;
-    background-color: #fff;
     overflow-x: hidden;
     line-height: 1.5;
 }
@@ -48,6 +48,9 @@ p:last-child {
 }
 ul, ol {
     margin-bottom: 20px;
+}
+hr {
+    border-top: 1px solid #6399cd;
 }
 blockquote {
     padding-top: 0;
@@ -103,69 +106,6 @@ pre {
     -o-transition: all .2s;
     -webkit-transition: all .2s;
     transition: all .2s;
-}
-.btn:hover, .btn:focus {
-    outline: none;
-}
-.btn-link {
-    color: #fed84f;
-}
-.btn-link:hover, .btn-link:focus {
-    color: #fed84f;
-}
-.btn-default, .label-default {
-    background-color: #FFF;
-    border-color: #FFF;
-    color: #E3530A;
-}
-.btn-default:hover, .btn-default:focus {
-    background-color: #F9FAFD;
-    border-color: #F9FAFD;
-    color: #E3530A;
-}
-.btn-success, .label-success, .alert-success {
-    background-color: #FFF;
-    border-color: #FFF;
-    color: #1E2024;
-}
-.btn-success:hover, .btn-success:focus {
-    border-color: #FFF;
-    background-color: #FFF;
-    color: #000;
-}
-.btn-primary, .label-primary {
-    background-color: #E3530A;
-    border-color: #E3530A;
-}
-.btn-primary:hover, .btn-primary:focus {
-    background-color: #d33c00;
-    border-color: #d33c00;
-}
-.btn-info, .label-info, .alert-info {
-    background-color: #FFF;
-    border-color: #FFF;
-    color: #01B0D1;
-}
-.btn-info:hover, .btn-info:focus {
-    background-color: #FFF;
-    border-color: #FFF;
-    color: #0299b8;
-}
-.btn-warning, .label-warning, .alert-warning {
-    background-color: #e67e22;
-    border-color: #e67e22;
-}
-.btn-warning:hover, .btn-warning:focus {
-    background-color: #d35400;
-    border-color: #d35400;
-}
-.btn-danger, .label-danger, .alert-danger {
-    background-color: #e74c3c;
-    border-color: #e74c3c;
-}
-.btn-danger:hover, .btn-danger:focus {
-    background-color: #c0392b;
-    border-color: #c0392b;
 }
 /*	Tab & Collapse Skin
 	==================================================*/
@@ -430,9 +370,9 @@ label {
     font-size: 1.8em;
 }
 
-/*	Contenu
+/*	ContenuAccueil
 	==================================================*/
-#contenu {
+#contenuaccueil {
     background-color: #fed84f;
     color: #6399cd;
 }
@@ -451,17 +391,6 @@ label {
     border: 2px solid;
     padding: 10px 10px 10px 10px;
     margin: 0 0 10px;
-}
-
-.tableauaccueil hr {
-    border-top: 1px solid #6399cd;
-}
-
-/*	Boite à idées
-	==================================================*/
-#idee_sondage {
-    font-size: 1em;
-    color:#6399cd;
 }
 
 /*	Slider Boite à idées
@@ -553,5 +482,60 @@ label {
     }
     #hero p.lead {
         font-size: 1.5em;
+    }
+}
+
+/* Gallerie
+	==================================================*/
+.gallerie ul li img {
+    cursor: pointer;
+}
+.gallerie ul {
+    padding:0 0 0 0;
+    margin:0 0 40px 0;
+}
+
+.gallerie .text{
+    color:#666;
+    font-size:15px;
+    margin-bottom:10px;
+    padding:12px;
+    background:#fff;
+}
+.controlsgallerie{
+    width:50px;
+    display:block;
+    font-size:11px;
+    padding-top:8px;
+    font-weight:bold;
+}
+.nextgallerie {
+    float:right;
+    text-align:right;
+}
+.modal-body {
+    padding:5px !important;
+}
+.modal-content {
+    border-radius:0;
+}
+.modal-dialog img {
+    text-align:center;
+    margin:0 auto;
+}
+.modal-dialog {
+    max-width:500px;
+}
+@media screen and (min-width: 768px){
+    .modal-dialog {
+        width:500px;
+    }
+}
+@media screen and (max-width: 380px){
+    .col-xxs-12 {
+        width:100%;
+    }
+    .col-xxs-12 img {
+        width:100%;
     }
 }

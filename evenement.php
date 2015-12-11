@@ -1,9 +1,9 @@
 <?php include('include/head.php'); ?>
 <?php include('include/menu.php'); ?>
-<br><br><br>
+<br><br><br><br>
 <!-- Start Section
 ================================================== -->
-<section id="contenu" class="section">
+<section class="section">
     <div class="container">
         <div class="row">
             <div class="lp-element">

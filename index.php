@@ -31,7 +31,7 @@ End Hero -->
 
 <!-- Start Contenu Section
 ================================================== -->
-<section id="contenu" class="section">
+<section id="contenuaccueil" class="section">
     <div class="container">
         <div class="row">
             <div class="col-md-6">
@@ -85,7 +85,7 @@ End Contenu -->
 
 <!-- Start Contenu Section
 ================================================== -->
-<section id="idee_sondage" class="section">
+<section class="section">
     <div class="container">
         <div class="row">
             <div class="col-md-8">

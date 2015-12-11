@@ -31,13 +31,13 @@
                     <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Espace Membre<span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         <?php
-                        if (isset($_SESSION['id'])) //les membres non connectes ne peuvent pas se deconnecter
+                        if (isset($_SESSION['numMembre'])) //les membres non connectes ne peuvent pas se deconnecter
                         {
                             if (strstr($_SERVER['REQUEST_URI'], '/membre/')){
                                 echo '<li><a href="index.php">Mon compte</a></li>';
                                 echo '<li role="separator" class="divider"></li>';
                                 echo '<li><a href="logout.php">Déconnexion</a></li>';;
-                                if ($_SESSION['level'] == '1') { //Si le membre est admin, il peut avoir ce menu
+                                if ($_SESSION['privilege'] == '1') { //Si le membre est admin, il peut avoir ce menu
                                     echo '<li role="separator" class="divider"></li>';
                                     echo '<li><a href="admin/index.php">Administration</a></li>';
                                 }
@@ -45,7 +45,7 @@
                                 echo '<li><a href="membre/index.php">Mon compte</a></li>';
                                 echo '<li role="separator" class="divider"></li>';
                                 echo '<li><a href="membre/logout.php">Déconnexion</a></li>';
-                                if ($_SESSION['level'] == '1') { //Si le membre est admin, il peut avoir ce menu
+                                if ($_SESSION['privilege'] == '1') { //Si le membre est admin, il peut avoir ce menu
                                     echo '<li role="separator" class="divider"></li>';
                                     echo '<li><a href="membre/admin">Administration</a></li>';
                                 }
