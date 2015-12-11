@@ -3,7 +3,7 @@
 <br><br><br>
 <!-- Start Section
 ================================================== -->
-<section class="section">
+<section id="contenu" class="section">
     <div class="container">
         <div class="row">
             <div class="lp-element">
