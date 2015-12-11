@@ -10,7 +10,7 @@
                 <h1>News<br></h1>
                 <?php
                 require 'include/connectbdd.php';
-                $requete = 'SELECT numNews, titre, texte, date FROM news';
+                $requete = 'SELECT numNews, titre, texte, date FROM news ORDER BY date DESC';
                 $req = $bdd->prepare($requete);
                 $req->execute();
                 while ($row = $req->fetch()) {
