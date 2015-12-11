@@ -8,7 +8,17 @@
             <div class="col-md-6">
                 <div class="lp-element">
                     <h1>BDE<br><span class="lighter">Lycée De La Salle</span></h1>
-                    <p class="lead">Bienvenue sur le site de l'organisation BDE du Lycée De La Salle.<br>Ce site vous permet d'être informé des différentes informations vous concernant. A MODIFIER</p>
+                    <p class="lead">
+                        <?php
+                        require 'include/connectbdd.php';
+                        $requete = "SELECT texte FROM contenu WHERE titre = 'MessageBienvenue'";
+                        $req = $bdd->prepare($requete);
+                        $req->execute();
+                        $row = $req->fetch();
+                        echo $row["texte"];
+                        $req->closeCursor();
+                        ?>
+                    </p>
                 </div>
             </div>
             <div class="col-md-6">
