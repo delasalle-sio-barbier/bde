@@ -1,38 +1,38 @@
 <?php
 // -------------------------------------------------------------------------------------------------------------------------
-//                                         boite ‡ outils de fonctions courantes
-//                       Auteur : JM Cartron                       DerniËre modification : 21/5/2015
+//                                         boite √† outils de fonctions courantes
+//                       Auteur : JM Cartron                       Derni√®re modification : 21/5/2015
 // -------------------------------------------------------------------------------------------------------------------------
 
-// liste des mÈthodes statiques de cette classe (dans l'ordre d'apparition dans le fichier) :
+// liste des m√©thodes statiques de cette classe (dans l'ordre d'apparition dans le fichier) :
 
 // estUnCodePostalValide    : validation d'un code postal (il doit comporter 5 chiffres)
 // estUneAdrMailValide      : validation d'une adresse mail
-// estUnNumTelValide        : validation d'un numÈro de tÈlÈphone (5 groupes de 2 chiffres EVENTUELLEMENT sÈparÈs)
+// estUnNumTelValide        : validation d'un num√©ro de t√©l√©phone (5 groupes de 2 chiffres EVENTUELLEMENT s√©par√©s)
 // estUneDateValide         : validation d'une date (format jj/mm/aaaa ou bien jj-mm-aaaa)
 // corrigerDate             : remplace les "/" par des "-"
 // corrigerVille            : met la ville en majuscules et remplace les "SAINT" par "St"
-// corrigerPrenom           : met en majuscules le premier caractËre, et le caractËre qui suit un Èventuel tiret
-// corrigerTelephone        : met le numÈro sous la forme de 5 groupes de 2 chiffres sÈparÈs par des points
-// convertirEnDateUS        : convertit une date franÁaise (j/m/a) au format US (a-m-j)
-// convertirEnDateFR        : convertit une date US (a-m-j) au format FranÁais (j/m/a)
-// envoyerMail              : envoyer un mail ‡ un destinataire
-// creerMdp                 : crÈer un mot de passe alÈatoire de 8 caractËres
+// corrigerPrenom           : met en majuscules le premier caract√®re, et le caract√®re qui suit un √©ventuel tiret
+// corrigerTelephone        : met le num√©ro sous la forme de 5 groupes de 2 chiffres s√©par√©s par des points
+// convertirEnDateUS        : convertit une date fran√ßaise (j/m/a) au format US (a-m-j)
+// convertirEnDateFR        : convertit une date US (a-m-j) au format Fran√ßais (j/m/a)
+// envoyerMail              : envoyer un mail √† un destinataire
+// creerMdp                 : cr√©er un mot de passe al√©atoire de 8 caract√®res
 
-// ce fichier est destinÈ ‡ Ítre inclus dans les pages PHP qui ont besoin des fonctions qu'il contient
-// 2 possibilitÈs pour inclure ce fichier :
+// ce fichier est destin√© √† √™tre inclus dans les pages PHP qui ont besoin des fonctions qu'il contient
+// 2 possibilit√©s pour inclure ce fichier :
 //     include_once ('Class.Outils.php');
 //     require_once ('Class.Outils.php');
 
-// ces mÈthodes statiques sont appelÈes avec la notation suivante :
+// ces m√©thodes statiques sont appel√©es avec la notation suivante :
 //     Outils::methode(parametres);
 
-// dÈbut de la classe Outils
+// d√©but de la classe Outils
 class Outils
 {
     // fournit true si $codePostalAvalider est un code postal valide (5 chiffres), false sinon
     public static function estUnCodePostalValide($codePostalAvalider)
-    {	// utilisation d'une expression rÈguliËre pour vÈrifier un code postal :
+    {	// utilisation d'une expression r√©guli√®re pour v√©rifier un code postal :
         $EXPRESSION = "#^[0-9]{5,5}$#";
         // on retourne true si le code est bon, mais aussi si le code est vide :
         if ( preg_match ( $EXPRESSION , $codePostalAvalider ) == true || $codePostalAvalider == "" ) return true; else return false;
@@ -40,17 +40,17 @@ class Outils
 
     // fournit true si $adrMailAvalider est une adresse valide, false sinon
     public static function  estUneAdrMailValide ($adrMailAvalider)
-    {	// utilisation d'une expression rÈguliËre pour vÈrifier une adresse mail :
+    {	// utilisation d'une expression r√©guli√®re pour v√©rifier une adresse mail :
         $EXPRESSION = "#^.+@.+\\..+$#";
         // on retourne true si l'adresse est bonne, mais aussi si l'adresse est vide :
         if ( preg_match ( $EXPRESSION , $adrMailAvalider) == true || $adrMailAvalider == "" ) return true; else return false;
     }
 
-    // fournit true si $numTelAvalider est un numÈro de tÈlÈphone valide, false sinon
+    // fournit true si $numTelAvalider est un num√©ro de t√©l√©phone valide, false sinon
     public static function  estUnNumTelValide ($numTelAvalider)
-    {	// utilisation d'une expression rÈguliËre pour vÈrifier un numÈro de tÈlÈphone :
+    {	// utilisation d'une expression r√©guli√®re pour v√©rifier un num√©ro de t√©l√©phone :
         $EXPRESSION = "#^([0-9]{2,2}( |\\.|-|_|,|/)?){4,4}[0-9]{2,2}$#";
-        // on retourne true si le numÈro est bon, mais aussi si le numÈro est vide :
+        // on retourne true si le num√©ro est bon, mais aussi si le num√©ro est vide :
         if ( preg_match ( $EXPRESSION , $numTelAvalider) == true || $numTelAvalider == "" ) return true; else return false;
     }
 
@@ -59,11 +59,11 @@ class Outils
     {	// on retourne true si la date est vide :
         if ( $laDateAvalider == "" ) return true;
 
-        // utilisation d'une expression rÈguliËre pour vÈrifier le format de la date :
+        // utilisation d'une expression r√©guli√®re pour v√©rifier le format de la date :
         $EXPRESSION = "#^[0-9]{2,2}(/|-)[0-9]{2,2}(/|-)[0-9]{4,4}$#";
         if ( preg_match ( $EXPRESSION , $laDateAvalider) == false) return false;
 
-        // jusque l‡, tout va bien ! on extrait les 3 sous-chaines et on les convertit en 3 entiers :
+        // jusque l√†, tout va bien ! on extrait les 3 sous-chaines et on les convertit en 3 entiers :
         $chaine1 = substr ($laDateAvalider, 0, 2);
         $chaine2 = substr ($laDateAvalider, 3, 2);
         $chaine3 = substr ($laDateAvalider, 6, 4);
@@ -79,7 +79,7 @@ class Outils
             if ( ( $mois == 4 || $mois == 6 || $mois == 9 || $mois == 11 ) && ( $jour > 30 ) )
                 return false;
             else
-            {   // cas du mois de fÈvrier
+            {   // cas du mois de f√©vrier
                 // % est l'op?rateur modulo ; il permet de tester si $an est multiple de 4, de 100 ou de 400
                 $bissextile = (($an % 4) == 0 && ($an % 100) != 0) || ($an % 400) == 0;
                 if ( $mois == 2 && $bissextile == false && $jour > 28 )
@@ -113,7 +113,7 @@ class Outils
         return $temporaire;
     }
 
-    // met en majuscules le premier caractËre, et le caractËre qui suit un Èventuel tiret (le reste en minuscules)
+    // met en majuscules le premier caract√®re, et le caract√®re qui suit un √©ventuel tiret (le reste en minuscules)
     public static function corrigerPrenom ($lePrenom)
     {	if ($lePrenom != "")
     {	$longueur = strlen($lePrenom);
@@ -134,7 +134,7 @@ class Outils
         return $lePrenom;
     }
 
-    // met le numÈro sous la forme de 5 groupes de 2 chiffres sÈparÈs par des points
+    // met le num√©ro sous la forme de 5 groupes de 2 chiffres s√©par√©s par des points
     public static function corrigerTelephone ($leNumero)
     {	$temporaire = $leNumero;
         $temporaire = str_replace (" ", "", $temporaire);	// supprime les espaces
@@ -157,38 +157,63 @@ class Outils
         }
     }
 
-    // La fonction dateUS convertit une date franÁaise (j/m/a) au format US (a-m-j)
-    // par exemple, le paramËtre '16/05/2007' donnera '2007-05-16'
+    // La fonction dateUS convertit une date fran√ßaise (j/m/a) au format US (a-m-j)
+    // par exemple, le param√®tre '16/05/2007' donnera '2007-05-16'
     public static function convertirEnDateUS ($laDate)
     {
         return date("Y-m-d", $laDate); //Affiche 28-12-2006
     }
 
-    // La fonction dateFR convertit une date US (a-m-j) au format FranÁais (j/m/a)
-    // par exemple, le paramËtre '2007-05-16' donnera '16/05/2007'
+    // La fonction dateFR convertit une date US (a-m-j) au format Fran√ßais (j/m/a)
+    // par exemple, le param√®tre '2007-05-16' donnera '16/05/2007'
     public static function convertirEnDateFR ($laDate)
     {
         return date("d/m/Y", $laDate); //Affiche 28/12/2006
     }
 
-    // La fonction dateHeureUS convertit une dateHeure franÁaise (j/m/a h:m:s) au format US (a-m-j h:m:s)
-    // par exemple, le paramËtre '16/05/2007' donnera '2007-05-16'
+    // La fonction dateHeureUS convertit une dateHeure fran√ßaise (j/m/a h:m:s) au format US (a-m-j h:m:s)
+    // par exemple, le param√®tre '16/05/2007' donnera '2007-05-16'
     public static function convertirEnDateHeureUS ($laDateHeure)
     {
         return date("Y-m-d H:i:s", $laDateHeure); //Affiche 28/12/2006 22:45:34
     }
 
-    // La fonction dateHeureFR convertit une dateHeure US (a-m-j h:m:s) au format FranÁais (j/m/a h:m:s)
-    // par exemple, le paramËtre '2007-05-16' donnera '16/05/2007'
+    // La fonction dateHeureFR convertit une dateHeure US (a-m-j h:m:s) au format Fran√ßais (j/m/a h:m:s)
+    // par exemple, le param√®tre '2007-05-16' donnera '16/05/2007'
     public static function convertirEnDateHeureFR ($laDateHeure)
     {
         return date("d/m/Y H:i:s", $laDateHeure); //Affiche 28/12/2006 22:45:34
     }
 
-    // envoie un mail ‡ un destinataire
-    // retourne true si envoi correct, false en cas de problËme d'envoi
+    // La fonction dateHeureFR convertit une dateHeure US (a-m-j h:m:s) au format Fran√ßais (j/m/a h:m:s)
+    // par exemple, le param√®tre '2007-05-16' donnera '16/05/2007'
+    public static function heureFormatFR ($laDateHeure)
+    {
+        setlocale (LC_TIME, 'fr_FR');
+        return strftime("%A %d %B %Y %T");
+    }
+
+    public static function date_fr($time = null, $format = 'l j F Y, H:i'){
+        if(empty($time)) $time = time();
+
+        $date = date($format, $time);
+
+        $jour_en = array("Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday");
+        $jour_fr = array("Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche");
+
+        $mois_en = array("January","February","March","April","May","June","July","August","September","October","November","December");
+        $mois_fr = array("Janvier","F√©vrier","Mars","Avril","Mai","Juin","Juillet","Ao√ªt","Septembre","Octobre","Novembre","D√©cembre");
+
+        $date = str_replace($jour_en, $jour_fr, $date);
+        $date = str_replace($mois_en, $mois_fr, $date);
+
+        return $date;
+    }
+
+    // envoie un mail √† un destinataire
+    // retourne true si envoi correct, false en cas de probl√®me d'envoi
     public static function  envoyerMail ($adresseDestinataire, $sujet, $message, $adresseEmetteur)
-    {	// utilisation d'une expression rÈguliËre pour vÈrifier si c'est une adresse Gmail :
+    {	// utilisation d'une expression r√©guli√®re pour v√©rifier si c'est une adresse Gmail :
         if ( preg_match ( "#^.+@gmail\.com$#" , $adresseDestinataire) == true)
         {	// on commence par enlever les points dans l'adresse gmail car ils ne sont pas pris en compte
             $adresseDestinataire = str_replace(".", "", $adresseDestinataire);
@@ -200,22 +225,22 @@ class Outils
         return $ok;
     }
 
-    // crÈe un mot de passe alÈatoire de 8 caractËres (4 syllabes avec 1 consonne et 1 voyelle)
+    // cr√©e un mot de passe al√©atoire de 8 caract√®res (4 syllabes avec 1 consonne et 1 voyelle)
     public static function creerMdp ()
     {   $consonnes = "bcdfghjklmnpqrstvwxz";
         $voyelles = "aeiouy";
         $mdp = "";
-        // on construit 4 syllabes de 2 caractËres
+        // on construit 4 syllabes de 2 caract√®res
         for ($i = 1 ; $i <= 4 ; $i++)
-        {   // on tire d'abord une consonne (position alÈatoire entre 0 et le nombre de consonnes - 1)
+        {   // on tire d'abord une consonne (position al√©atoire entre 0 et le nombre de consonnes - 1)
             $position = rand (0, strlen($consonnes)-1);
-            // on rÈcupËre la consonne correspondant ‡ la position dans $consonnes
+            // on r√©cup√®re la consonne correspondant √† la position dans $consonnes
             $unCaract = substr ($consonnes, $position, 1);
             // on ajoute cette consonne au mot de passe
             $mdp = $mdp . $unCaract;
-            // puis on tire une voyelle (position alÈatoire entre 0 et le nombre de voyelles - 1)
+            // puis on tire une voyelle (position al√©atoire entre 0 et le nombre de voyelles - 1)
             $position = rand (0, strlen($voyelles)-1);
-            // on rÈcupËre la voyelle correspondant ‡ la position dans $voyelles
+            // on r√©cup√®re la voyelle correspondant √† la position dans $voyelles
             $unCaract = substr ($voyelles, $position, 1);
             // on ajoute cette voyelle au mot de passe
             $mdp = $mdp . $unCaract;
@@ -225,4 +250,4 @@ class Outils
 } // fin de la classe Outils
 
 // ATTENTION : on ne met pas de balise de fin de script pour ne pas prendre le risque
-// d'enregistrer d'espaces aprËs la balise de fin de script !!!!!!!!!!!!
+// d'enregistrer d'espaces apr√®s la balise de fin de script !!!!!!!!!!!!

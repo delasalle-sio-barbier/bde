@@ -21,7 +21,7 @@
         <?php
         if (strstr($_SERVER['REQUEST_URI'], '/membre/')){?>
             <!-- Style du thème -->
-            <link rel="stylesheet" href="../style/style_theme.css">
+            <link rel="stylesheet" href="../style/style.css">
 
             <!-- TyniMCE -->
             <script type="text/javascript" src="../include/tinymce/tinymce.min.js"></script>
@@ -30,7 +30,7 @@
             <link rel="shortcut icon" href="../style/images/logo_bde.png">
         <?php } else { ?>
             <!-- Style du thème -->
-            <link rel="stylesheet" href="style/style_theme.css">
+            <link rel="stylesheet" href="style/style.css">
 
             <!-- TyniMCE -->
             <script type="text/javascript" src="include/tinymce/tinymce.min.js"></script>

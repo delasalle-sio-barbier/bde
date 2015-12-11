@@ -89,7 +89,47 @@ End Contenu -->
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                Boite à idées ici
+                <h1>Boite à idées<br></h1>
+                <div id="carousel-example" class="carousel slide" data-ride="carousel">
+                    <!-- Wrapper for slides -->
+                    <div class="row">
+                        <div class="col-xs-offset-3 col-xs-6">
+                            <div class="carousel-inner">
+                                <div class="item active">
+                                    <div class="carousel-content">
+                                        <div>
+                                            <h3>Titre1</h3>
+                                            <p>Boite à idée1</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="carousel-content">
+                                        <div>
+                                            <h3>Titre2</h3>
+                                            <p>Boite à idée2</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="carousel-content">
+                                        <div>
+                                            <h3>Titre3</h3>
+                                            <p>Boite à idée3</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Controls --> <a class="left carousel-control" href="#carousel-example" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left"></span>
+                    </a>
+                    <a class="right carousel-control" href="#carousel-example" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                </div>
             </div>
             <div class="col-md-4">
                 Sondage ici
@@ -99,4 +139,30 @@ End Contenu -->
 </section>
 <!-- ==================================================
 End Contenu -->
+
+<!-- ==================================================
+Script du Slider de boite à idées -->
+<script>
+    setCarouselHeight('#carousel-example');
+
+    function setCarouselHeight(id)
+    {
+        var slideHeight = [];
+        $(id+' .item').each(function()
+        {
+            // add all slide heights to an array
+            slideHeight.push($(this).height());
+        });
+
+        // find the tallest item
+        max = Math.max.apply(null, slideHeight);
+
+        // set the slide's height
+        $(id+' .carousel-content').each(function()
+        {
+            $(this).css('height',max+'px');
+        });
+    }
+</script>
+
 <?php include('include/footer.php'); ?>
