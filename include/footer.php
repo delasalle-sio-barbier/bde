@@ -5,8 +5,8 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="lp-element">
-                        <a href="https://www.facebook.com/bde.lycee.dls/" target="_blank"><img src="images/fb_icone.png" alt="facebook" width="50" height="50" border="0" /></a>
-                        <a href="https://www.facebook.com/bde.lycee.dls/" target="_blank"><img src="images/tw_icone.png" alt="twitter" width="50" height="50" border="0" /></a>
+                        <a href="https://www.facebook.com/bde.lycee.dls/" target="_blank"><img src="style/images/fb_icone.png" alt="facebook" width="50" height="50" border="0" /></a>
+                        <a href="https://www.facebook.com/bde.lycee.dls/" target="_blank"><img src="style/images/tw_icone.png" alt="twitter" width="50" height="50" border="0" /></a>
                         <!-- PAS DE PAGE TWITTER -->
 
                         BDE<br>
