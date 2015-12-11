@@ -20,9 +20,9 @@
 
         var html = '';
         html += img;
-        html += '<div style="height:25px;clear:both;display:block;">';
-        html += '<a class="controlsgallerie nextgallerie" href="'+ (clicked.nextImg) + '">next &raquo;</a>';
-        html += '<a class="controlsgallerie previous" href="' + (clicked.prevImg) + '">&laquo; prev</a>';
+        html += '<div style="height:30px;clear:both;display:block;">';
+        html += '<a class="controlsgallerie nextgallerie" href="'+ (clicked.nextImg) + '">Suivant &raquo;</a>';
+        html += '<a class="controlsgallerie previous" href="' + (clicked.prevImg) + '">&laquo; Précédent</a>';
         html += '</div>';
 
         $('#myModal').modal();

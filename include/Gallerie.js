@@ -69,9 +69,9 @@
           var img = '<img src="' + clicked.img + '" class="img-responsive"/>';
 
           html += img;
-          html += '<div style="height:25px;clear:both;display:block;">';
-          html += '<a class="controls next" data-bsp-id="'+clicked.ulId+'" href="'+ (clicked.nextImg) + '">next &raquo;</a>';
-          html += '<a class="controls previous" data-bsp-id="'+clicked.ulId+'" href="' + (clicked.prevImg) + '">&laquo; prev</a>';
+          html += '<div style="height:30px;clear:both;display:block;">';
+          html += '<a class="controls next" data-bsp-id="'+clicked.ulId+'" href="'+ (clicked.nextImg) + '">Suivant &raquo;</a>';
+          html += '<a class="controls previous" data-bsp-id="'+clicked.ulId+'" href="' + (clicked.prevImg) + '">&laquo; Précédent</a>';
           html += '</div>';
           $('#bsPhotoGalleryModal .modal-body').html(html);
           showHideControls();
