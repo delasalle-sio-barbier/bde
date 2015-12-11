@@ -160,21 +160,29 @@ class Outils
     // La fonction dateUS convertit une date française (j/m/a) au format US (a-m-j)
     // par exemple, le paramètre '16/05/2007' donnera '2007-05-16'
     public static function convertirEnDateUS ($laDate)
-    {	$tableau = explode ("/", $laDate);		// on extrait les segments de la chaine $laDate séparés par des "/"
-        $jour = $tableau[0];
-        $mois = $tableau[1];
-        $an = $tableau[2];
-        return ($an . "-" . $mois . "-" . $jour);		// on les reconcatène dans un ordre différent
+    {
+        return date("Y-m-d", $laDate); //Affiche 28-12-2006
     }
 
     // La fonction dateFR convertit une date US (a-m-j) au format Français (j/m/a)
     // par exemple, le paramètre '2007-05-16' donnera '16/05/2007'
     public static function convertirEnDateFR ($laDate)
-    {	$tableau = explode ("-", $laDate);		// on extrait les segments de la chaine $laDate séparés par des "/"
-        $an = $tableau[0];
-        $mois = $tableau[1];
-        $jour = $tableau[2];
-        return ($jour . "/" . $mois . "/" . $an);		// on les reconcatène dans un ordre différent
+    {
+        return date("d/m/Y", $laDate); //Affiche 28/12/2006
+    }
+
+    // La fonction dateHeureUS convertit une dateHeure française (j/m/a h:m:s) au format US (a-m-j h:m:s)
+    // par exemple, le paramètre '16/05/2007' donnera '2007-05-16'
+    public static function convertirEnDateHeureUS ($laDateHeure)
+    {
+        return date("Y-m-d H:i:s", $laDateHeure); //Affiche 28/12/2006 22:45:34
+    }
+
+    // La fonction dateHeureFR convertit une dateHeure US (a-m-j h:m:s) au format Français (j/m/a h:m:s)
+    // par exemple, le paramètre '2007-05-16' donnera '16/05/2007'
+    public static function convertirEnDateHeureFR ($laDateHeure)
+    {
+        return date("d/m/Y H:i:s", $laDateHeure); //Affiche 28/12/2006 22:45:34
     }
 
     // envoie un mail à un destinataire

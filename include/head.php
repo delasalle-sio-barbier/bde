@@ -40,3 +40,10 @@
         <?php } ?>
     </head>
     <body>
+    <?php
+    if (strstr($_SERVER['REQUEST_URI'], '/membre/')){
+        require_once('../include/Outils.php');
+    } else {
+        require_once('include/Outils.php');
+    }
+    ?>

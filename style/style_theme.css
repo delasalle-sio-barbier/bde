@@ -206,8 +206,8 @@ pre {
     background-color: #1abc9c;
 }
 .nav .caret, .nav a:hover .caret {
-    border-top-color: #1abc9c;
-    border-bottom-color: #1abc9c;
+    border-top-color: #fed84f;
+    border-bottom-color: #fed84f;
 }
 .dropdown-menu>.active>a, .dropdown-menu>.active>a:hover, .dropdown-menu>.active>a:focus {
     background-color: #1abc9c;

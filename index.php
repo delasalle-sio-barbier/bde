@@ -47,7 +47,7 @@ End Hero -->
                         echo '      <strong>' . $row['titre'] . '</strong>';
                         echo '  </div>';
                         echo '  <div style="float: right;">';
-                        echo '      <strong>' . $row['date'] . '</strong>';
+                        echo '      <strong>' . Outils::convertirEnDateFR(strtotime($row['date'])) . '</strong>';
                         echo '  </div><br><hr>';
                         echo    $row['texte'];
                         echo '</div>';
@@ -68,7 +68,7 @@ End Hero -->
                         echo '      <strong>' . $row['titre'] . '<br>Lieu : '.$row['lieu'].'</strong>';
                         echo '  </div>';
                         echo '  <div style="float: right;">';
-                        echo '      <strong>Du ' . $row['dateDebut'] . '<br>au '.$row['dateFin'].'</strong>';
+                        echo '      <strong>Du ' . Outils::convertirEnDateHeureFR(strtotime($row['dateDebut'])) . '<br>au '.Outils::convertirEnDateHeureFR(strtotime($row['dateFin'])).'</strong>';
                         echo '  </div><br><br><hr>';
                         echo    $row['texte'];
                         echo '</div>';
