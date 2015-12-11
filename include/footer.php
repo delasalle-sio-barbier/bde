@@ -8,15 +8,12 @@
                         <a href="https://www.facebook.com/bde.lycee.dls/" target="_blank"><img src="style/images/fb_icone.png" alt="facebook" width="50" height="50" border="0" /></a>
                         <a href="https://www.twitter.com/bde.lycee.dls/" target="_blank"><img src="style/images/tw_icone.png" alt="twitter" width="50" height="50" border="0" /></a><br>
                         <!-- PAS DE PAGE TWITTER -->
-
-                        BDE<br>
-                        Bienvenue sur le site de l'organisation BDE du Lycée De La Salle.<br>Ce site vous permet d'être informé des différentes informations vous concernant. A MODIFIER
+                        <br>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="lp-element">
-                        BDE<br>
-                        Bienvenue sur le site de l'organisation BDE du Lycée De La Salle.<br>Ce site vous permet d'être informé des différentes informations vous concernant. A MODIFIER
+                        <i>Site fait par un groupe de SIO2..</i>
                     </div>
                 </div>
                 <div class="col-md-4">
