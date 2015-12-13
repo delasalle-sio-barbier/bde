@@ -17,13 +17,13 @@
                     echo '<li><a href="../index.php">Accueil</a></li>';
                     echo '<li><a href="../news.php">News</a></li>';
                     echo '<li><a href="../evenement.php">Evenements</a></li>';
-                    echo '<li><a href="../galerie.php">Galerie</a></li>';
+                    echo '<li><a href="../album.php">Galerie</a></li>';
                     echo '<li><a href="../contact.php">Contact</a></li>';
                 } else {
                     echo '<li><a href="index.php">Accueil</a></li>';
                     echo '<li><a href="news.php">News</a></li>';
                     echo '<li><a href="evenement.php">Evenements</a></li>';
-                    echo '<li><a href="galerie.php">Galerie</a></li>';
+                    echo '<li><a href="album.php">Galerie</a></li>';
                     echo '<li><a href="contact.php">Contact</a></li>';
                 }
                 ?>

@@ -2,7 +2,7 @@
 <?php include('include/menu.php'); ?>
 <br><br><br><br>
 
-<!-- Script pour la gallerie -->
+<!-- Script pour la galerie -->
 <script>
 (function(){
     "use strict";
@@ -21,8 +21,8 @@
         var html = '';
         html += img;
         html += '<div style="height:30px;clear:both;display:block;">';
-        html += '<a class="controlsgallerie nextgallerie" href="'+ (clicked.nextImg) + '">Suivant &raquo;</a>';
-        html += '<a class="controlsgallerie previous" href="' + (clicked.prevImg) + '">&laquo; Précédent</a>';
+        html += '<a class="controlsgalerie nextgalerie" href="'+ (clicked.nextImg) + '">Suivant &raquo;</a>';
+        html += '<a class="controlsgalerie previous" href="' + (clicked.prevImg) + '">&laquo; Précédent</a>';
         html += '</div>';
 
         $('#myModal').modal();
@@ -47,7 +47,7 @@
 
         if($(this).hasClass('previous')){
             $(this).attr('href', clicked.prevImg);
-            $('a.nextgallerie').attr('href', clicked.nextImg);
+            $('a.nextgalerie').attr('href', clicked.nextImg);
         }else{
             $(this).attr('href', clicked.nextImg);
             $('a.previous').attr('href', clicked.prevImg);
@@ -64,9 +64,9 @@
         var total = ($('li').not('.clearfix').length);
 
         if(total === clicked.nextImg){
-            $('a.nextgallerie').hide();
+            $('a.nextgalerie').hide();
         }else{
-            $('a.nextgallerie').show()
+            $('a.nextgalerie').show()
         }
 
         if(clicked.prevImg === -1){
@@ -77,7 +77,7 @@
     }
 
     $(document).ready(function(){
-        $(this).on('click', 'a.controlsgallerie', nextPrevHandler);
+        $(this).on('click', 'a.controlsgalerie', nextPrevHandler);
         $('li').not('.clearfix').each(function(i){
             $(this).attr('data-index',i);
             var img = $(this).find('img');
@@ -87,159 +87,32 @@
 })();
 </script>
 
-<section class="container gallerie">
+<section class="container galerie">
     <div class="row">
-        <h1><center>Gallerie</center></h1><hr>
+        <h1><center>Galerie</center></h1><hr>
     </div>
-
     <ul class="row">
-        <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4 col-xxs-12">
-            <img class="img-responsive" src="style/gallerie/images/photodune-174908-rocking-the-night-away-xs.jpg">
-            <div class="text">Consectetur adipiscing elit</div>
-        </li>
-        <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4 col-xxs-12">
-            <img class="img-responsive" src="style/gallerie/images/photodune-287182-blah-blah-blah-yellow-road-sign-xs.jpg">
-            <div class="text">Lorem ipsum dolor sit amet, labore et dolore magna aliqua. Ut enim ad minim veniam</div>
-        </li>
-        <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4 col-xxs-12">
-            <img class="img-responsive" src="style/gallerie/images/photodune-460760-colors-xs.jpg">
-        </li>
-
-
-        <li class="clearfix visible-xs-block"></li>
-
-
-        <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4 col-xxs-12">
-            <img class="img-responsive" src="style/gallerie/images/photodune-461673-retro-party-xs.jpg">
-            <div class="text">Lorem, do eiusmod tempor incid Ut enim ad minim veniam</div>
-        </li>
-
-
-        <li class="clearfix visible-sm-block"></li>
-
-
-        <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4 col-xxs-12">
-            <img class="img-responsive" src="style/gallerie/images/photodune-514834-touchscreen-technology-xs.jpg">
-            <div class="text">Do eiusmod tempor</div>
-        </li>
-        <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4 col-xxs-12">
-            <img class="img-responsive" src="style/gallerie/images/photodune-916206-legal-xs.jpg">
-            <div class="text">Eiusmod tempor enim ad minim veniam</div>
-        </li>
-
-
-        <li class="clearfix visible-lg-block  visible-md-block visible-xs-block"></li>
-
-
-        <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4 col-xxs-12">
-            <img class="img-responsive" src="style/gallerie/images/photodune-1062948-nature-xs.jpg">
-            <div class="text">Adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</div>
-        </li>
-        <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4 col-xxs-12">
-            <img class="img-responsive" src="style/gallerie/images/photodune-1471528-insant-camera-kid-xs.jpg">
-            <div class="text">Lorem ipsum dolor sit amet, labore et dolore magna aliqua. Ut enim ad minim veniam</div>
-        </li>
-
-
-        <li class="clearfix visible-sm-block"></li>
-
-
-
-        <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4 col-xxs-12">
-            <img class="img-responsive" src="style/gallerie/images/photodune-2255072-relaxed-man-xs.jpg">
-            <div class="text">Eiusmod tempor enim ad minim veniam</div>
-        </li>
-
-
-        <li class="clearfix visible-xs-block"></li>
-
-
-        <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4 col-xxs-12">
-            <img class="img-responsive" src="style/gallerie/images/photodune-2360379-colors-xs.jpg">
-            <div class="text">Consectetur adipiscing elit</div>
-        </li>
-        <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4 col-xxs-12">
-            <img class="img-responsive" src="style/gallerie/images/photodune-2360571-jump-xs.jpg">
-            <div class="text">Lorem ipsum dolor sit amet, labore et dolore magna aliqua. Ut enim ad minim veniam</div>
-        </li>
-        <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4 col-xxs-12">
-            <img class="img-responsive" src="style/gallerie/images/photodune-2361384-culture-for-business-xs.jpg">
-            <div class="text">Adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</div>
-        </li>
-
-
-        <li class="clearfix visible-lg-block  visible-md-block visible-sm-block visible-xs-block"></li>
-
-
-        <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4 col-xxs-12">
-            <img class="img-responsive" src="style/gallerie/images/photodune-2441670-spaghetti-with-tuna-fish-and-parsley-s.jpg">
-            <div class="text">Lorem ipsum dolor sit amet, labore et dolore magna aliqua. Ut enim ad minim veniam</div>
-        </li>
-        <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4 col-xxs-12">
-            <img class="img-responsive" src="style/gallerie/images/photodune-2943363-budget-xs.jpg">
-            <div class="text">Adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</div>
-        </li>
-        <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4 col-xxs-12">
-            <img class="img-responsive" src="style/gallerie/images/photodune-3444921-street-art-xs.jpg">
-            <div class="text">Consectetur adipiscing elit, re magna aliqua. Ut enim ad minim veniam</div>
-        </li>
-
-
-        <li class="clearfix visible-xs-block"></li>
-
-
-        <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4 col-xxs-12">
-            <img class="img-responsive" src="style/gallerie/images/photodune-3552322-insurance-xs.jpg">
-            <div class="text">Ut enim ad minim veniam</div>
-        </li>
-
-
-        <li class="clearfix visible-sm-block"></li>
-
-
-        <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4 col-xxs-12">
-            <img class="img-responsive" src="style/gallerie/images/photodune-3807845-food-s.jpg">
-            <div class="text">Eiusmod tempor enim ad minim veniam</div>
-        </li>
-        <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4 col-xxs-12">
-            <img class="img-responsive" src="style/gallerie/images/photodune-3835655-down-office-worker-xs.jpg">
-            <div class="text">Ut enim ad minim veniam</div>
-        </li>
-
-
-        <li class="clearfix visible-lg-block  visible-md-block visible-xs-block"></li>
-
-
-        <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4 col-xxs-12">
-            <img class="img-responsive" src="style/gallerie/images/photodune-4619216-ui-control-knob-regulators-xs.jpg">
-            <div class="text">Do eiusmod tempor</div>
-        </li>
-
-        <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4 col-xxs-12">
-            <img class="img-responsive" src="style/gallerie/images/photodune-5771958-health-xs.jpg">
-            <div class="text">Lorem ipsum dolor sit amet, labore et dolore magna aliqua. Ut enim ad minim veniam</div>
-        </li>
-
-
-        <li class="clearfix visible-sm-block"></li>
-
-
-        <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4 col-xxs-12">
-            <img class="img-responsive" src="style/gallerie/images/photodune-268693-businesswoman-using-laptop-outdoors-xs.jpg">
-            <div class="text">Consectetur adipiscing elit, re magna aliqua. Ut enim ad minim veniam</div>
-        </li>
-        <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4 col-xxs-12">
-            <img class="img-responsive" src="style/gallerie/images/photodune-352207-search-of-code-s.jpg">
-            <div class="text">Adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</div>
-        </li>
-
-        <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4 col-xxs-12">
-            <img class="img-responsive" src="style/gallerie/images/photodune-247190-secret-email-xs.jpg">
-        </li>
-        <li class="col-lg-2 col-md-2 col-sm-3 col-xs-4 col-xxs-12">
-            <img class="img-responsive" src="style/gallerie/images/photodune-682990-online-search-xs.jpg">
-            <div class="text">Eiusmod tempor enim ad minim veniam</div>
-        </li>
+        <?php
+        require 'include/connectbdd.php';
+        $requete = 'SELECT numPhoto, nomPhoto, urlPhoto FROM photo WHERE numAlbum = '.$_GET["numAlbum"].' ORDER BY numPhoto';
+        $req = $bdd->prepare($requete);
+        $req->execute();
+        $compteur = 0;
+        while ($row = $req->fetch()) {
+            echo '<li class="col-lg-2 col-md-2 col-sm-4 col-xs-4 col-xxs-12">';
+            echo '  <img class="img-responsive" src="style/images/galerie/'.$row["urlPhoto"].'">';
+            if (!empty($row["nomPhoto"]))
+                echo '  <div class="text">'.$row["nomPhoto"].'</div>';
+            echo '</li>';
+            $compteur += 1;
+            if ($compteur % 6 == 0) {
+                echo '<li class="clearfix visible-lg  visible-md"></li><br class="visible-lg visible-md">';
+            } elseif ($compteur % 3 == 0) {
+                echo '<li class="clearfix visible-xs visible-sm"></li><br class="visible-xs visible-sm">';
+            }
+        }
+        $req->closeCursor();
+        ?>
     </ul>
 </section> <!-- /container -->
 

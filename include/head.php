@@ -40,7 +40,7 @@
 
         <?php
             if (basename($_SERVER['PHP_SELF']))
-                echo '<script src="include/Gallerie.js"></script>';
+                echo '<script src="include/Galerie.js"></script>';
         } ?>
     </head>
     <body>

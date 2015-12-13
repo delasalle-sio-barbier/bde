@@ -654,6 +654,7 @@
       <column name="numAlbum" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
       <column name="titre" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
       <column name="dateCreation" sqlType="DATE" precision="10" scale="0" nullable="false" jdbcType="91"/>
+      <column name="imageAlbum" sqlType="VARCHAR" precision="1000" scale="0" nullable="true" jdbcType="12" def="J2ltYWdlX3ZpZGUucG5nJw=="/>
       <primary-key name="PRIMARY" columns="numAlbum"/>
       <exported-key name="fkPhoto" table="photo" schema="" catalog="pierreba_bde" columns="numAlbum"/>
     </table>
@@ -714,7 +715,7 @@
     </table>
     <table name="photo" schema="" catalog="pierreba_bde" type="TABLE">
       <column name="numPhoto" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
-      <column name="nomPhoto" sqlType="VARCHAR" precision="100" scale="0" nullable="false" jdbcType="12"/>
+      <column name="nomPhoto" sqlType="VARCHAR" precision="100" scale="0" nullable="true" jdbcType="12"/>
       <column name="urlPhoto" sqlType="TEXT" precision="65535" scale="0" nullable="false" jdbcType="-1"/>
       <column name="numAlbum" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="numPhoto"/>
