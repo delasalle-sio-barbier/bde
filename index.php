@@ -20,7 +20,7 @@
                     </p>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 visible-lg visible-md">
                 <img src="style/images/logo_bde.png" height="575" width="575">
             </div>
         </div>
