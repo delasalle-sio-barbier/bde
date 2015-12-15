@@ -1,5 +1,5 @@
-<div id ="header" class = "navbar navbar-inverse navbar-fixed-top">
-    <div class = "container">
+<div class = "navbar navbar-inverse navbar-fixed-top">
+    <div id ="header" class = "container">
         <?php
         if (strstr($_SERVER['REQUEST_URI'], '/membre/'))
             echo '<a class="navbar-brand" href="../index.php">BDE - <span class="lighter">Lycée De La Salle</span></a>';
