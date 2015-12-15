@@ -1,17 +1,20 @@
-<div id ="header" class = "navbar navbar-inverse navbar-fixed-top">
-    <div class = "container">
-        <?php
-        if (strstr($_SERVER['REQUEST_URI'], '/membre/'))
-            echo '<a class="navbar-brand" href="../index.php">BDE - <span class="lighter">Lycée De La Salle</span></a>';
-        else
-            echo '<a class="navbar-brand" href="index.php">BDE - <span class="lighter">Lycée De La Salle</span></a>';
-        ?>
-        <button class = "navbar-toggle" data-toggle = "collapse" data-target = ".navHeaderCollapse">
-            <span class = "icon-bar"></span>
-            <span class = "icon-bar"></span>
-            <span class = "icon-bar"></span>
-        </button>
-        <div class = "collapse navbar-collapse navHeaderCollapse">
+<nav id ="header" class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <?php
+            if (strstr($_SERVER['REQUEST_URI'], '/membre/'))
+                echo '<a class="navbar-brand" href="../index.php">BDE - <span class="lighter">Lycée De La Salle</span></a>';
+            else
+                echo '<a class="navbar-brand" href="index.php">BDE - <span class="lighter">Lycée De La Salle</span></a>';
+            ?>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
             <ul class = "nav navbar-nav navbar-right">
                 <?php
                 if (strstr($_SERVER['REQUEST_URI'], '/membre/')){
@@ -64,6 +67,6 @@
 
                 </li>
             </ul>
-        </div>
+        </div><!--/.nav-collapse -->
     </div>
-</div>
+</nav>
