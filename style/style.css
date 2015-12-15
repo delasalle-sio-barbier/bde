@@ -87,23 +87,11 @@ pre {
 /*	Header
 	==================================================*/
 #header {
+    background-color: #848484;
+    color:white;
     box-shadow: 0 0 5px rgba(0,0,0,.05);
     -webkit-box-shadow: 0 0 5px rgba(0,0,0,.05);
     -moz-box-shadow: 0 0 5px rgba(0,0,0,.05);
-}
-
-/*	Parallax Background
-	==================================================*/
-
-#parallax {
-    height: 1080px;
-    width: 100%;
-    top: 0;
-    position: fixed;
-    background: url('../../demo/iphone.png') center center no-repeat;
-    background-size: cover;
-    z-index: -100;
-    background-color: #e3530a;
 }
 
 /*	Navbar

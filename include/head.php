@@ -2,7 +2,7 @@
 <html lang="fr">
     <head>
         <!-- Meta, title, CSS, favicons, etc. -->
-        <meta charset="utf-8">
+        <meta charset="utf-8" name="viewport" content="width=device-width">
 
         <title>BDE - Lycée De La Salle</title>
 
