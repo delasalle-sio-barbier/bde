@@ -96,7 +96,7 @@ End Contenu -->
                         <div class="col-xs-offset-3 col-xs-6">
                             <div class="carousel-inner">
                                 <?php
-                                $requete = 'SELECT numIdee, numMembre, titre, texte, date FROM idee';
+                                $requete = 'SELECT numIdee, titre, texte, date FROM idee';
                                 $req = $bdd->prepare($requete);
                                 $req->execute();
                                 $compteur = 0;
