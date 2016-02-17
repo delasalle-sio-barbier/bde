@@ -5,8 +5,15 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="lp-element">
-                        <a href="https://www.facebook.com/bde.lycee.dls/" target="_blank"><img src="style/images/fb_icone.png" alt="facebook" width="50" height="50" border="0" /></a>
-                        <a href="https://www.twitter.com/bde.lycee.dls/" target="_blank"><img src="style/images/tw_icone.png" alt="twitter" width="50" height="50" border="0" /></a><br>
+                        <?php
+                        if (strstr($_SERVER['REQUEST_URI'], '/membre/')){
+                            echo '<a href="https://www.facebook.com/bde.lycee.dls/" target="_blank"><img src="../style/images/fb_icone.png" alt="facebook" width="50" height="50" border="0" /></a>
+                            <a href="https://www.twitter.com/bde.lycee.dls/" target="_blank"><img src="../style/images/tw_icone.png" alt="twitter" width="50" height="50" border="0" /></a><br>';
+                        } else {
+                            echo '<a href="https://www.facebook.com/bde.lycee.dls/" target="_blank"><img src="style/images/fb_icone.png" alt="facebook" width="50" height="50" border="0" /></a>
+                        <a href="https://www.twitter.com/bde.lycee.dls/" target="_blank"><img src="style/images/tw_icone.png" alt="twitter" width="50" height="50" border="0" /></a><br>';
+                        }
+                        ?>
                         <!-- PAS DE PAGE TWITTER -->
                         <br>
                     </div>
