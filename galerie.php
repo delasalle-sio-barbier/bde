@@ -1,7 +1,5 @@
 <?php include('include/head.php'); ?>
 <?php include('include/menu.php'); ?>
-<br><br><br><br>
-
 <!-- Script pour la galerie -->
 <script>
 (function(){

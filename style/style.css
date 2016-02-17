@@ -139,6 +139,7 @@ pre {
 #hero {
     background-color: #6399cd;
     color: #FFF;
+    margin:-20px;
 }
 #hero .lp-element {
     padding: 100px 0px;

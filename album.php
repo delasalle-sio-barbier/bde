@@ -1,6 +1,5 @@
 <?php include('include/head.php'); ?>
 <?php include('include/menu.php'); ?>
-<br><br><br><br>
 <!-- Start Section
 ================================================== -->
     <section class="container galerie">

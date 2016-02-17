@@ -1,13 +1,12 @@
 <?php include('include/head.php'); ?>
 <?php include('include/menu.php'); ?>
-<br><br><br><br>
 <!-- Start Section
 ================================================== -->
 <section class="section">
     <div class="container">
         <div class="row">
             <div class="lp-element">
-                <h1>News<br></h1>
+                <h1>Evenements<br></h1>
                 <?php
                 require 'include/connectbdd.php';
                 $requete = 'SELECT numEvenement, titre, texte, lieu, dateDebut, dateFin FROM evenement ORDER BY numEvenement DESC';
