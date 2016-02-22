@@ -7,7 +7,7 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="lp-element">
-                    <h1>BDE<br><span class="lighter">Lycée De La Salles</span></h1>
+                    <h1>BDE<br><span class="lighter">Lycée De La Salle</span></h1>
                     <p class="lead">
                         <?php
                         require 'include/connectbdd.php';
