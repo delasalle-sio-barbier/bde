@@ -6,7 +6,7 @@
         echo '<h1>Suppression des membres</h1><hr>';
         echo "Tous les membres ont bien été supprimés";
         require '../include/connectbdd.php';
-        $requete = " DELETE FROM membre ";
+        $requete = " DELETE FROM membre WHERE deleteallow = 0";
         $bdd->exec($requete);
     }
     ?>
