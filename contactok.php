@@ -15,7 +15,7 @@
                     $headers .= "MIME-Version: 1.0\n";
                     $headers .= "Content-Type: multipart/alternative; boundary=\"$boundary\"";
 
-                    $destinataire = 'delasalle.sio.barbier.p@gmail.com';
+                    $destinataire = 'bdelyceedls@gmail.com';
 
                     $subject = 'Contact BDE : '. $_POST['titre'];
 
