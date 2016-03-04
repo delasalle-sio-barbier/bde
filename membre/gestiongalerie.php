@@ -83,7 +83,7 @@
             <?php
         }
         ?>
-    </div> <!-- /container -->
+    </div><br> <!-- /container -->
 <?php include('../include/footer.php'); ?>
 
 <!-- script pour gérer le select de l'album -->
