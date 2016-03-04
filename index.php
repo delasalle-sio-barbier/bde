@@ -88,7 +88,15 @@ End Hero -->
                         echo '  <div style="float: right;">';
                         echo '      <strong>Du ' . Outils::date_fr(strtotime($row['dateDebut'])) . '<br>au '.Outils::date_fr(strtotime($row['dateFin'])).'</strong>';
                         echo '  </div><br><br><hr>';
-                        echo    $row['texte'];
+                        $chaine = $row['texte'];
+                        $len = 200;
+
+                        if (strlen($chaine) >= $len) {
+                            echo $chaine = substr($chaine,0,$len) . "..." ;
+                            echo '<p style="text-align: right;"><a href="#">En savoir plus ››</a></p>';
+                        } else {
+                            echo $row['texte'];
+                        }
                         echo '</div>';
                     }
                     $req->closeCursor();
