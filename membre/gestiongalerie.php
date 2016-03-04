@@ -4,13 +4,15 @@
         <?php
         /* si le membre est connecte*/
         if(isset($_SESSION['numMembre']) && ($_SESSION['privilege'] == 'admin' || $_SESSION['privilege'] == 'owner'))
-        {
-            echo '<h1>Gestion de la galerie</h1><hr>';
-            echo '<a href="newalbum.php" style="text-decoration : underline;">Créer un nouvel album</a>';
-            require '../include/connectbdd.php';?>
+        { ?>
+            <h1>Gestion de la galerie</h1><hr>
+            <ul>
+                <li><a href="newalbum.php" style="text-decoration : underline;">Créer un nouvel album</a></li>
+            </ul>
+            <?php require '../include/connectbdd.php';?>
             <br><br><hr>
             <?php
-                if(!empty($_POST) && isset($_POST['upload']) && !empty($_GET['numAlbum'])) { // si formulaire soumis
+            if(!empty($_POST) && isset($_POST['upload']) && !empty($_GET['numAlbum'])) { // si formulaire soumis
                 $content_dir = '../style/images/galerie/'; // dossier où sera déplacé le fichier
 
                 $tmp_file = $_FILES['fichier']['tmp_name'];
@@ -32,7 +34,6 @@
                         echo "Impossible de copier le fichier dans $content_dir";
                     } else{
                         echo "L'image a bien été ajoutée";
-                        $req = $bdd->prepare('INSERT membre SET email = :email WHERE numMembre = :numMembre');
                         $req = $bdd->prepare('INSERT INTO photo (nomPhoto, urlPhoto, numAlbum) VALUES (:nomPhoto,:urlPhoto,:numAlbum)');
                         $req->execute(array('nomPhoto' => $_POST['nomPhoto'], 'urlPhoto' => $name_file, 'numAlbum' => $_POST['numAlbum']));
                     }
@@ -44,12 +45,20 @@
                 $resultat = $req->fetch();
                 echo "<h3>Ajouter une nouvelle photo dans l'album ".$resultat['titre']."</h3>"?>
                 <form method="post" enctype="multipart/form-data">
-                    <p>
-                        Nom de la photo (optionnel) : <input type="text" name="nomPhoto" size="40">
-                        <input type="file" name="fichier" size="30">
-                        <input type="hidden" name="numAlbum" value="<?php echo $_GET['numAlbum'] ?>">
-                        <input type="submit" name="upload" value="Uploader">
-                    </p>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <input class="form-control" type="text" placeholder="Nom de la photo (optionnel)" name="nomPhoto">
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <input type="file" name="fichier" size="30">
+                        </div>
+                    </div><br>
+                    <input type="hidden" name="numAlbum" value="<?php echo $_GET['numAlbum'] ?>">
+                    <div class="row">
+                        <button class="btn btn-large btn-primary" name="upload" type="submit">Envoyer</button>
+                    </div>
                 </form>
             <?php
             } else { // Sinon on affiche la sélection de membre
@@ -60,12 +69,12 @@
                         <div class="col-lg-6">
                             <select id="listealbum" name="membre" onchange="change_valeur()">
                                 <option>Album</option>';
-                $requete = "SELECT * FROM album";
-                $req = $bdd->prepare($requete);
-                $req->execute();
-                while ($row = $req->fetch()) {
-                    echo '<option value="'.$row['numAlbum'].'">'.$row['titre'].'</option>';
-                } ?>
+                                $requete = "SELECT * FROM album";
+                                $req = $bdd->prepare($requete);
+                                $req->execute();
+                                while ($row = $req->fetch()) {
+                                    echo '<option value="'.$row['numAlbum'].'">'.$row['titre'].'</option>';
+                                } ?>
                             </select>
                         </div>
                     </div>

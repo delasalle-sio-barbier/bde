@@ -9,13 +9,27 @@
         <ul class="row">
             <?php
             require 'include/connectbdd.php';
-            $requete = 'SELECT numAlbum, titre, dateCreation, imageAlbum FROM album ORDER BY dateCreation DESC';
+            // SELECT D'UNE IMAGE POUR L'ALBUM
+            $requete = 'SELECT urlPhoto FROM photo GROUP BY numAlbum;';
+            $req = $bdd->prepare($requete);
+            $req->execute();
+            $tab_img = array();
+            while ($row = $req->fetch()) {
+                array_push($tab_img, $row['urlPhoto']);
+            }
+
+            // SELECT DE TOUTES LES INFOS DE L'ALBUM
+            $requete = 'SELECT numAlbum, titre, dateCreation FROM album ORDER BY numAlbum ASC';
             $req = $bdd->prepare($requete);
             $req->execute();
             $compteur = 0;
             while ($row = $req->fetch()) {
                 echo '<li class="col-lg-2 col-md-2 col-sm-4 col-xs-4 col-xxs-12">';
-                echo '  <a href="galerie.php?numAlbum='.$row['numAlbum'].'"><img class="img-responsive" src="style/images/galerie/'.$row["imageAlbum"].'"></a>';
+                if(empty($tab_img[$compteur])) {
+                    echo '  <a href="galerie.php?numAlbum='.$row['numAlbum'].'"><img class="img-responsive" src="style/images/galerie/image_vide.png"></a>';
+                } else{
+                    echo '  <a href="galerie.php?numAlbum='.$row['numAlbum'].'"><img class="img-responsive" src="style/images/galerie/'.$tab_img[$compteur].'"></a>';
+                }
                 echo '  <div class="text">'.$row["titre"].'</div>';
                 echo '</li>';
                 $compteur += 1;
