@@ -9,19 +9,44 @@
                 <h1>Evenements<br></h1>
                 <?php
                 require 'include/connectbdd.php';
-                $requete = 'SELECT numEvenement, titre, texte, lieu, dateDebut, dateFin FROM evenement ORDER BY numEvenement DESC';
-                $req = $bdd->prepare($requete);
-                $req->execute();
-                while ($row = $req->fetch()) {
+                if (!empty($_GET['numEvenement'])) {
+                    $requete = 'SELECT * FROM evenement WHERE numEvenement = '.$_GET['numEvenement'];
+                    $req = $bdd->prepare($requete);
+                    $req->execute();
+                    $resultat = $req->fetch();
                     echo '<div class="tableauaccueil">';
                     echo '  <div style="float: left;">';
-                    echo '      <strong>' . $row['titre'] . '<br>Lieu : '.$row['lieu'].'</strong>';
+                    echo '      <strong>' . $resultat['titre'] . '<br>Lieu : ' . $resultat['lieu'] . '</strong>';
                     echo '  </div>';
                     echo '  <div style="float: right;">';
-                    echo '      <strong>Du ' . Outils::date_fr(strtotime($row['dateDebut'])) . '<br>au '.Outils::date_fr(strtotime($row['dateFin'])).'</strong>';
+                    echo '      <strong>Du ' . Outils::date_fr(strtotime($resultat['dateDebut'])) . '<br>au ' . Outils::date_fr(strtotime($resultat['dateFin'])) . '</strong>';
                     echo '  </div><br><br><hr>';
-                    echo    $row['texte'];
+                    echo $resultat['texte'];
                     echo '</div>';
+                }else {
+                    require 'include/connectbdd.php';
+                    $requete = 'SELECT numEvenement, titre, texte, lieu, dateDebut, dateFin FROM evenement ORDER BY numEvenement DESC';
+                    $req = $bdd->prepare($requete);
+                    $req->execute();
+                    while ($row = $req->fetch()) {
+                        echo '<div class="tableauaccueil">';
+                        echo '  <div style="float: left;">';
+                        echo '      <strong>' . $row['titre'] . '<br>Lieu : ' . $row['lieu'] . '</strong>';
+                        echo '  </div>';
+                        echo '  <div style="float: right;">';
+                        echo '      <strong>Du ' . Outils::date_fr(strtotime($row['dateDebut'])) . '<br>au ' . Outils::date_fr(strtotime($row['dateFin'])) . '</strong>';
+                        echo '  </div><br><br><hr>';
+                        $chaine = $row['texte'];
+                        $len = 200;
+
+                        if (strlen($chaine) >= $len) {
+                            echo $chaine = substr($chaine, 0, $len) . "...";
+                            echo '<p style="text-align: right;"><a href="evenement.php?numEvenement=' . $row['numEvenement'] . '">En savoir plus ››</a></p>';
+                        } else {
+                            echo $row['texte'];
+                        }
+                        echo '</div>';
+                    }
                 }
                 $req->closeCursor();
                 ?>
@@ -31,4 +56,5 @@
 </section>
 <!-- ==================================================
 End Section -->
+<br>
 <?php include('include/footer.php'); ?>

@@ -64,7 +64,7 @@ End Hero -->
 
                         if (strlen($chaine) >= $len) {
                             echo $chaine = substr($chaine,0,$len) . "..." ;
-                            echo '<p style="text-align: right;"><a href="#">En savoir plus ››</a></p>';
+                            echo '<p style="text-align: right;"><a href="news.php?numNews='.$row['numNews'].'">En savoir plus ››</a></p>';
                         } else {
                             echo $row['texte'];
                         }
@@ -86,14 +86,14 @@ End Hero -->
                         echo '      <strong>' . $row['titre'] . '<br>Lieu : '.$row['lieu'].'</strong>';
                         echo '  </div>';
                         echo '  <div style="float: right;">';
-                        echo '      <strong>Du ' . Outils::date_fr(strtotime($row['dateDebut'])) . '<br>au '.Outils::date_fr(strtotime($row['dateFin'])).'</strong>';
+                        echo '      <strong>Du ' . Outils::convertirEnDateFR(strtotime($row['dateDebut'])) . '<br>au '.Outils::convertirEnDateFR(strtotime($row['dateFin'])).'</strong>';
                         echo '  </div><br><br><hr>';
                         $chaine = $row['texte'];
                         $len = 200;
 
                         if (strlen($chaine) >= $len) {
                             echo $chaine = substr($chaine,0,$len) . "..." ;
-                            echo '<p style="text-align: right;"><a href="#">En savoir plus ››</a></p>';
+                            echo '<p style="text-align: right;"><a href="evenement.php?numEvenement='.$row['numEvenement'].'">En savoir plus ››</a></p>';
                         } else {
                             echo $row['texte'];
                         }
