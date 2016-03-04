@@ -30,7 +30,11 @@
                     <td>'.$row['auteur'].'</td>
                     <td>'.$row['classe'].'</td>
                     <td>'.$row['date'].'</td>
-                    <td>Mettre icones</td>
+                    <td>
+                        <a href="#" title="Modifier l\'idée" style="color:orange"><i class="fa fa-pencil"></i>&nbsp;&nbsp;&nbsp;</a>
+                        <a href="#" title="Valider l\'idée" style="color:green"><i class="fa fa-check"></i>&nbsp;&nbsp;&nbsp;</a>
+                        <a href="#" title="Supprimer l\'idée" style="color:red"><i class="fa fa-trash"></i></a>
+                    </td>
                 </tr>
                 ';
             }
