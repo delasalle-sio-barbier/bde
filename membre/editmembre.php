@@ -89,6 +89,7 @@
 </div> <!-- /container -->
 <?php include('../include/footer.php'); ?>
 
+<!-- script pour gérer le select du membre -->
 <script>
 function change_valeur() {
 select = document.getElementById("listemembre");

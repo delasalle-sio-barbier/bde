@@ -1,3 +1,7 @@
+html{
+    height: 100%;
+}
+
 @font-face {
     font-family: 'Glyphicons Halflings';
     src: url('../style/fonts/glyphicons-halflings-regular.eot');
