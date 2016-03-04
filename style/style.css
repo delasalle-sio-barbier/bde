@@ -1,5 +1,12 @@
+@font-face {
+    font-family: 'Glyphicons Halflings';
+    src: url('../style/fonts/glyphicons-halflings-regular.eot');
+    src: url('../style/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'), url('../style/fonts/glyphicons-halflings-regular.woff') format('woff'), url('../style/fonts/glyphicons-halflings-regular.ttf') format('truetype'), url('../style/fonts/glyphicons-halflings-regular.svg#glyphicons-halflingsregular') format('svg');
+}
+
+
 body {
-    background-color: #ebebeb;
+    background-color: #FFFFFF;
     color: #6399cd;
     font: normal 18px "Dosis", "Helvetica Neue", Helvetica, Arial, sans-serif;
     font-weight: 300;
@@ -30,7 +37,7 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     margin-top: 0;
 }
 h1 {font-size: 38px;}
-h2 {font-size: 32px;}
+h2 {font-size: 19px;}
 h3 {font-size: 24px;}
 h4 {font-size: 20px;}
 h5 {font-size: 18px;}
@@ -71,7 +78,7 @@ pre {
 /*	Section
 	==================================================*/
 .section {
-    padding: 20px 0;
+    /* padding: 0px 20px 20px 20px; */
 }
 .active-section {
     top: 20px;
@@ -104,7 +111,7 @@ pre {
     font-weight: bold;
 }
 .navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
-    color: #6399cd;
+    color: #fed84f;
 }
 .navbar-inverse {
     background-color: #FFF;
@@ -121,7 +128,7 @@ pre {
 .navbar-inverse .navbar-nav>li>a {
     color: inherit;
     text-transform: uppercase;
-    font-size: 12px;
+    font-size: 15px;
     font-weight: bold;
 }
 .navbar-inverse .navbar-nav>li>a:hover, .navbar-inverse .navbar-nav>li>a:focus,
@@ -139,7 +146,7 @@ pre {
 #hero {
     background-color: #6399cd;
     color: #FFF;
-    margin:-20px;
+    margin: -20px 0px 0px 0px;
 }
 #hero .lp-element {
     padding: 100px 0px;
@@ -158,6 +165,364 @@ pre {
     background-color: #fed84f;
     color: #6399cd;
 }
+/*** Individual section styles and separators ***/
+/* Common style for pseudo-elements */
+section::before,
+section::after {
+    position: absolute;
+    content: '';
+    pointer-events: none;
+}
+
+/* Triangles */
+.ss-style-triangles::before,
+.ss-style-triangles::after {
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    -webkit-transform: translateX(-50%) rotate(45deg);
+    transform: translateX(-50%) rotate(45deg);
+}
+
+.ss-style-triangles::before {
+    top: -50px;
+    background: teal;
+}
+
+.ss-style-triangles::after {
+    bottom: -50px;
+    z-index: 10;
+    background: inherit;
+}
+
+/* Double Diagonal line */
+.ss-style-doublediagonal {
+    z-index: 1;
+    padding-top: 6em;
+    background: #004848;
+}
+
+.ss-style-doublediagonal::before,
+.ss-style-doublediagonal::after {
+    top: 0;
+    left: -25%;
+    z-index: -1;
+    width: 150%;
+    height: 75%;
+    background: inherit;
+    -webkit-transform: rotate(-2deg);
+    transform: rotate(-2deg);
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+}
+
+.ss-style-doublediagonal::before {
+    height: 50%;
+    background: #003434;
+    -webkit-transform: rotate(-3deg);
+    transform: rotate(-3deg);
+    -webkit-transform-origin: 3% 0;
+    transform-origin: 3% 0;
+}
+
+/* Half Circle */
+.ss-style-halfcircle::before,
+.ss-style-halfcircle::after {
+    left: 50%;
+    z-index: 10;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: inherit;
+    -webkit-transform: translateX(-50%);
+    transform: translateX(-50%);
+}
+
+.ss-style-halfcircle::before {
+    top: -50px;
+}
+
+.ss-style-halfcircle::after {
+    bottom: -50px;
+}
+
+/* Big Triangle */
+svg#bigTriangleColor {
+    pointer-events: none;
+}
+
+#bigTriangleColor path {
+    fill: #005c5c;
+    stroke: #005c5c;
+    stroke-width: 2;
+}
+
+/* Curves */
+#curveUpColor path,
+#curveDownColor path {
+    fill: #6399CD;
+    stroke: #6399CD;
+    /* top: -10px; */
+}
+
+/* Multiple Triangles */
+.ss-style-multitriangles::before,
+.ss-style-multitriangles::after {
+    left: 50%;
+    width: 50px;
+    height: 50px;
+    -webkit-transform: translateX(-50%) rotate(45deg);
+    transform: translateX(-50%) rotate(45deg);
+}
+
+.ss-style-multitriangles::before {
+    top: -25px;
+    background: inherit;
+    box-shadow: -50px 50px 0 #005c5c, 50px -50px 0 #005c5c;
+}
+
+.ss-style-multitriangles::after {
+    bottom: -25px;
+    z-index: 10;
+    background: inherit;
+    box-shadow: -50px 50px 0 #005c5c, 50px -50px 0 #005c5c;
+}
+
+/* Rounded corners */
+.ss-style-roundedcorners::before {
+    top: 100%;
+    left: 0;
+    z-index: 10;
+    width: 100%;
+    height: 60px;
+    border-radius: 0 0 60px 60px;
+    background: inherit;
+}
+
+/* Rounded center split and bottom rounded */
+.ss-style-roundedsplit {
+    padding-top: 7em;
+    border-radius: 0 0 80px 80px;
+}
+
+.ss-style-roundedsplit::before,
+.ss-style-roundedsplit::after {
+    top: -70px;
+    left: 0;
+    z-index: 10;
+    width: 50%;
+    height: 70px;
+    background: inherit;
+}
+
+.ss-style-roundedsplit::before {
+    border-radius: 0 80px 0 0;
+}
+
+.ss-style-roundedsplit::after {
+    left: 50%;
+    border-radius: 80px 0 0 0;
+}
+
+/* Inverted rounded corners */
+.ss-style-invertedrounded {
+    margin-bottom: 90px;
+    padding: 13em 10% 10em;
+    border-radius: 0 0 0 90px;
+}
+
+.ss-style-invertedrounded::before,
+.ss-style-invertedrounded::after {
+    left: 0;
+    z-index: -1;
+    height: 90px;
+    background: #005c5c;
+}
+
+.ss-style-invertedrounded::before {
+    top: 100%;
+    width: 100%;
+    border-radius: 0 90px 0 0;
+}
+
+.ss-style-invertedrounded::after {
+    bottom: 0;
+    z-index: -1;
+    width: 50%;
+}
+
+/* Zig Zag (3d up and simple down) */
+.ss-style-zigzag::before,
+.ss-style-zigzag::after {
+    right: 0;
+    left: 0;
+    z-index: 10;
+    display: block;
+    height: 90px;
+    background-size: 50px 100%;
+}
+
+.ss-style-zigzag::before {
+    top: -90px;
+    background-image: -webkit-gradient(linear, 0 0, 300% 100%, color-stop(0.25, transparent), color-stop(0.25, #005c5c));
+    background-image: linear-gradient(315deg, #007676 25%, rgba(0, 0, 0, 0) 25%), linear-gradient(45deg, #005c5c 25%, rgba(0, 0, 0, 0) 25%);
+    background-position: 50%;
+}
+
+.ss-style-zigzag::after {
+    top: 100%;
+    background-image: -webkit-gradient(linear, 0 0, 300% 100%, color-stop(0.25, #005c5c), color-stop(0.25, teal));
+    background-image: linear-gradient(135deg, #005c5c 25%, rgba(0, 0, 0, 0) 25%), linear-gradient(225deg, #005c5c 25%, rgba(0, 0, 0, 0) 25%);
+    background-position: 50%;
+}
+
+/* Edges */
+.ss-style-roundedges {
+    padding-bottom: 16em;
+}
+
+.ss-style-roundedges::before,
+.ss-style-roundedges::after {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: teal;
+    top: -100px;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.ss-style-roundedges::before {
+    left: -100px;
+}
+
+.ss-style-roundedges::after {
+    right: -100px;
+}
+
+/* Slit */
+.ss-style-slit {
+    padding-top: 5em;
+}
+
+.ss-style-slit::before,
+.ss-style-slit::after {
+    width: 50.5%;
+    width: -webkit-calc(50% + 10px);
+    width: -moz-calc(50% + 10px);
+    width: calc(50% + 10px);
+    height: 160px;
+    background: teal;
+    top: -160px;
+}
+
+.ss-style-slit::before {
+    left: -20px;
+    -webkit-transform: skewX(10deg);
+    transform: skewX(10deg);
+    box-shadow: -10px -20px #005757;
+}
+
+.ss-style-slit::after {
+    right: -20px;
+    -webkit-transform: skewX(-10deg);
+    transform: skewX(-10deg);
+    box-shadow: 10px -20px #005757;
+}
+
+/* Big half circle */
+#bigHalfCircle path {
+    fill: #005c5c;
+    stroke: #005c5c;
+}
+
+/* Big triangle with shadow */
+#trianglePath1 {
+    fill: #FFFFFF;
+    stroke: #FFFFFF;
+}
+
+#trianglePath2 {
+    fill: #E6E6E6;
+    stroke: #E6E6E6;
+}
+
+/* Inclined Zig Zag */
+.ss-style-inczigzag::before,
+.ss-style-inczigzag::after {
+    left: 0;
+    width: 100%;
+    height: 50px;
+    background-size: 100px 100%;
+}
+
+.ss-style-inczigzag::before {
+    top: 0;
+    background-image: -webkit-gradient(linear, 0 0, 10% 100%, color-stop(0.5, #004848), color-stop(0.5, #005c5c));
+    background-image: linear-gradient(15deg, #005c5c 50%, #008080 50%);
+}
+
+.ss-style-inczigzag::after {
+    bottom: 0;
+    background-image: -webkit-gradient(linear, 0 0, 10% 100%, color-stop(0.5, #005c5c), color-stop(0.5, teal));
+    background-image: linear-gradient(15deg, #008080 50%, #005c5c 50%);
+}
+
+/* Clouds */
+#clouds path {
+    fill: #FFFFFF;
+    stroke: #FFFFFF;
+}
+
+.clouds {
+    background: pink;
+}
+.clouds p {
+    color: #333;
+}
+.clouds a {
+    color: #004d4d;
+    text-decoration: none;
+}
+.clouds a:hover {
+    color: black;
+}
+
+/* Media Queries for the layout */
+@media screen and (max-width: 68em) {
+    section {
+        font-size: 100%;
+    }
+}
+@media screen and (max-width: 54em) {
+    .column {
+        display: block;
+        width: 100% !important;
+    }
+
+    .text:first-child,
+    .text:nth-child(2) {
+        text-align: center;
+    }
+
+    .icon {
+        margin: 0 auto;
+    }
+
+    .col-2 .column:first-child .icon {
+        margin: 0 auto 50px;
+    }
+
+    .col-2 .column:nth-child(2) .icon {
+        margin: 50px auto 0;
+    }
+}
+/*	Idee
+	==================================================*/
+#idee {
+    background-color: #FFFFFF;
+    color: #6399cd;
+}
 
 /*	Footer
 	==================================================*/
@@ -165,6 +530,11 @@ pre {
     background-color: #A4A4A4;
     color: #FFF;
     font-size: 1em;
+}
+
+
+#footer a {
+    color: #FFC400;;
 }
 
 /*	Tableau News et Evenements de l'Accueil
@@ -175,7 +545,7 @@ pre {
     margin: 0 0 10px;
 }
 
-/*	Slider Boite à idées
+/*	Slider Boite Ã  idÃ©es
 	==================================================*/
 .sliderboiteaidees {
     display:flex;
@@ -195,6 +565,11 @@ pre {
     .navbar-nav>li>a {
         margin: 0 7px;
     }
+	
+			#hero .lp-element {
+    padding: 5px 2px 20px 2px;
+}
+	
 }
 @media (max-width: 767px) {
     .overview .lead {
@@ -236,7 +611,7 @@ pre {
         font-size: 18px;
     }
     .section {
-        padding: 20px 0;
+        padding: 13px 0;
     }
     .overview p.lead {
         margin-bottom: 40px;
@@ -251,7 +626,17 @@ pre {
         padding-right: 30px;
     }
 
+		#hero .lp-element {
+    padding: 5px 2px 2px 2px;
+	}
 
+	.navbar-inverse .navbar-brand {
+		padding: 18px 0px 0px 0px !important;
+		margin-right: 13px !important;
+		color: inherit;
+		text-transform: uppercase;
+		font-weight: bold;
+	}
 }
 @media (max-width: 490px) {
     .container {
@@ -260,7 +645,7 @@ pre {
         padding-right: 30px;
     }
     #hero h1 {
-        font-size: 38px;
+        font-size: 33px;
     }
     #hero p.lead {
         font-size: 1.5em;

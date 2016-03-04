@@ -7,12 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <?php
-            if (strstr($_SERVER['REQUEST_URI'], '/membre/'))
-                echo '<a class="navbar-brand" href="../index.php">BDE - <span class="lighter">Lycée De La Salle</span></a>';
-            else
-                echo '<a class="navbar-brand" href="index.php">BDE - <span class="lighter">Lycée De La Salle</span></a>';
-            ?>
+			<a class="navbar-brand" href="index.php">BDE - <span class="lighter">Lycée De La Salle</span></a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class = "nav navbar-nav navbar-right">
