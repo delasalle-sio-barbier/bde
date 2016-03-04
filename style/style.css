@@ -1,4 +1,4 @@
-html{
+html, body{
     height: 100%;
 }
 
@@ -16,6 +16,15 @@ body {
     font-weight: 300;
     overflow-x: hidden;
     line-height: 1.5;
+}
+
+#wrap {
+    min-height: 100%;
+    height: auto;
+    /* Negative indent footer by its height */
+    margin: 0 auto -300px;
+    /* Pad bottom by footer height */
+    padding: 0 0 300px;
 }
 
 a {
@@ -534,11 +543,11 @@ svg#bigTriangleColor {
     background-color: #A4A4A4;
     color: #FFF;
     font-size: 1em;
+    height: 330px;
 }
 
-
 #footer a {
-    color: #FFC400;;
+    color: #FFC400;
 }
 
 /*	Tableau News et Evenements de l'Accueil
