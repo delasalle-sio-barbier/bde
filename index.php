@@ -145,7 +145,7 @@ End Contenu -->
                         <div class="col-xs-offset-3 col-xs-6">
                             <div class="carousel-inner row text-center">
                                 <?php
-                                $requete = 'SELECT * FROM idee';
+                                $requete = 'SELECT * FROM idee WHERE statut = 1';
                                 $req = $bdd->prepare($requete);
                                 $req->execute();
                                 $compteur = 0;
