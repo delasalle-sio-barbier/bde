@@ -88,7 +88,7 @@
                         $req->closeCursor();
                     }else {
                         echo '<b>Erreur d\'ajout : </b><br>Au moins un des champs est vide.';
-                        header('refresh:5; url=gestionnews.php?action=ajout');
+                        header('refresh:5; url=gestionnews.php?action=modifier');
                         ob_flush();
                     }
                 } else {
@@ -121,7 +121,7 @@
                         </div><br>
                         <div class="row">
                             <div class="col-lg-12">
-                                <button class="btn btn-large btn-primary" type="submit">Envoyer</button>
+                                <button class="btn btn-large btn-primary" type="submit">Modifier</button>
                             </div>
                         </div>
                     </form>
