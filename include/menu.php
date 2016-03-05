@@ -35,20 +35,21 @@
                         {
                             if (strstr($_SERVER['REQUEST_URI'], '/membre/')){
                                 echo '<li><a href="index.php">Mon compte</a></li>';
-                                echo '<li role="separator" class="divider"></li>';
-                                echo '<li><a href="logout.php">Déconnexion</a></li>';;
                                 if ($_SESSION['privilege'] == 'admin' || $_SESSION['privilege'] == 'owner') { //Si le membre est admin, il peut avoir ce menu
                                     echo '<li role="separator" class="divider"></li>';
                                     echo '<li><a href="admin.php">Administration</a></li>';
                                 }
+                                echo '<li role="separator" class="divider"></li>';
+                                echo '<li><a href="logout.php"><b>Déconnexion</b></a></li>';
                             } else {
                                 echo '<li><a href="membre/index.php">Mon compte</a></li>';
-                                echo '<li role="separator" class="divider"></li>';
-                                echo '<li><a href="membre/logout.php">Déconnexion</a></li>';
+
                                 if ($_SESSION['privilege'] == 'admin' || $_SESSION['privilege'] == 'owner') { //Si le membre est admin, il peut avoir ce menu
                                     echo '<li role="separator" class="divider"></li>';
                                     echo '<li><a href="membre/admin.php">Administration</a></li>';
                                 }
+                                echo '<li role="separator" class="divider"></li>';
+                                echo '<li><a href="membre/logout.php"><b>Déconnexion</b></a></li>';
                             }
                         }else {
                             if (strstr($_SERVER['REQUEST_URI'], '/membre/')) {

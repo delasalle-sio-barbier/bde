@@ -5,7 +5,7 @@
         /* si le membre est connecte*/
         if(isset($_SESSION['numMembre']) && ($_SESSION['privilege'] == 'admin' || $_SESSION['privilege'] == 'owner'))
         {
-            echo '<h1>Gestion de la boite à idée</h1><hr>';
+            echo '<h1>Gestion de la boite à idée</h1>';
 
             // Select des idées pour le tableau
             require '../include/connectbdd.php';
@@ -15,12 +15,12 @@
             echo '
             <table class="table">
                 <tr>
-                    <th>Texte</th>
+                    <th>Message</th>
                     <th>Hashtag</th>
                     <th>Auteur</th>
                     <th>Classe</th>
                     <th>Date</th>
-                    <th>Menu</th>
+                    <th>Options</th>
                 </tr>';
             while ($row = $req->fetch()) {
                 echo '

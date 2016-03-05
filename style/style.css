@@ -17,7 +17,15 @@ body {
     overflow-x: hidden;
     line-height: 1.5;
 }
+img {
+    max-width: 100%;
+    height: auto;
+}
 
+video {
+    max-width: 100%;
+    height: auto;
+}
 a {
     color: #3498db;
     cursor: pointer;
@@ -569,11 +577,11 @@ svg#bigTriangleColor {
     .navbar-nav>li>a {
         margin: 0 7px;
     }
-	
+
 			#hero .lp-element {
     padding: 5px 2px 20px 2px;
 }
-	
+
 }
 @media (max-width: 767px) {
     .overview .lead {
