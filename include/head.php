@@ -60,3 +60,4 @@
         require_once('include/Outils.php');
     }
     ?>
+    <div id="wrap"> <!-- Ouverture de la div wrap pour le footer -->
