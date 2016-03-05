@@ -51,4 +51,5 @@
         }
         ?>
     </div> <!-- /container -->
+    <br>
 <?php include('../include/footer.php'); ?>
