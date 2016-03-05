@@ -3,8 +3,9 @@
 <!-- Script TinyMCE -->
 <script>
     tinymce.init({
-        selector: 'textarea',
-        height: 200,
+        selector: "textarea",
+        language : "fr_FR",
+        height: 300,
         plugins: [
             'advlist autolink lists link image charmap print preview anchor',
             'searchreplace visualblocks code fullscreen',
@@ -40,12 +41,12 @@
             ?>
             <form method="post">
                 <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
                         <textarea class="form-control" rows="5" id="mytextarea" name="texte"><?php echo $donnee['texte'] ?></textarea>
                     </div>
                 </div><br>
                 <div class="row">
-                    <button class="btn btn-large btn-primary" type="submit">Envoyer</button>
+                    <button class="btn btn-large btn-primary" type="submit">Modifier</button>
                 </div>
             </form>
             <?php
