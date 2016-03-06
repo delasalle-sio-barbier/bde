@@ -60,7 +60,9 @@
             <div class="panel-heading">Erreur : Vous n'avez pas l'accès à cette page. Vous n'êtes pas admin ou vous n'êtes pas connectés !</div>
         </div>
         <?php
+        header('refresh:1; url=editmsgbienvenue.php');
+        ob_flush();
     }
     ?>
-</div> <!-- /container -->
+</div><br><!-- /container -->
 <?php include('../include/footer.php'); ?>
