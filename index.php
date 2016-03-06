@@ -54,10 +54,7 @@ End Hero -->
                     while ($row = $req->fetch()) {
                         echo '<div class="tableauaccueil">';
                         echo '  <div style="float: left;">';
-                        echo '      <strong>' . $row['titre'] . '</strong>';
-                        echo '  </div>';
-                        echo '  <div style="float: right;">';
-                        echo '      <strong>' . Outils::convertirEnDateFR(strtotime($row['date'])) . '</strong>';
+                        echo '      <strong><a href="news.php?numNews='.$row['numNews'].'">' . $row['titre'] . '</a></strong>';
                         echo '  </div><br><hr>';
                         $chaine = $row['texte'];
                         $len = 250;
@@ -66,7 +63,7 @@ End Hero -->
                             echo $chaine = substr($chaine,0,$len) . "..." ;
                             echo '<p style="text-align: right;"><a href="news.php?numNews='.$row['numNews'].'">En savoir plus ››</a></p>';
                         } else {
-                            echo $row['texte'];
+                            echo '<p style="text-align: right;"><a href="news.php?numNews='.$row['numNews'].'">En savoir plus ››</a></p>';
                         }
                         echo '</div>';
                     }

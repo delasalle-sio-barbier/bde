@@ -17,11 +17,11 @@
                     echo '<div class="tableauaccueil">';
                     echo '  <div style="float: left;">';
                     echo '      <strong>' . $resultat['titre'] . '</strong>';
-                    echo '  </div>';
-                    echo '  <div style="float: right;">';
-                    echo '      <strong>' . Outils::date_fr(strtotime($resultat['date']), 'l j F Y') . '</strong>';
                     echo '  </div><br><hr>';
                     echo $resultat['texte'];
+                    echo '<br><div style="text-align: right;">';
+                    echo '<strong>Publiée le ' . Outils::convertirEnDateFR(strtotime($resultat['date'])) . ' par l\'équipe du BDE</strong><br>';
+                    echo '</div>';
                     echo '</div>';
                 }else{
                     $requete = 'SELECT numNews, titre, texte, date FROM news ORDER BY date DESC';
@@ -30,7 +30,7 @@
                     while ($row = $req->fetch()) {
                         echo '<div class="tableauaccueil">';
                         echo '  <div style="float: left;">';
-                        echo '      <strong>' . $row['titre'] . '</strong>';
+                        echo '      <strong><a href="news.php?numNews='.$row['numNews'].'">' . $row['titre'] . '</a></strong>';
                         echo '  </div>';
                         echo '  <div style="float: right;">';
                         echo '      <strong>' . Outils::date_fr(strtotime($row['date']), 'l j F Y') . '</strong>';
@@ -42,7 +42,7 @@
                             echo $chaine = substr($chaine,0,$len) . "..." ;
                             echo '<p style="text-align: right;"><a href="news.php?numNews='.$row['numNews'].'">En savoir plus ››</a></p>';
                         } else {
-                            echo $row['texte'];
+                            echo '<p style="text-align: right;"><a href="news.php?numNews='.$row['numNews'].'">En savoir plus ››</a></p>';
                         }
                         echo '</div>';
                     }
