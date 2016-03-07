@@ -100,7 +100,7 @@
 function change_valeur() {
 select = document.getElementById("listealbum");
 choice = select.selectedIndex;
-urlredirection = 'gestionGalerie.php?numAlbum='+select.options[choice].value;
+urlredirection = 'gestiongalerie.php?numAlbum='+select.options[choice].value;
 document.location.href=urlredirection;
 }
 </script>
