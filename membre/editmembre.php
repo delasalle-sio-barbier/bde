@@ -24,38 +24,48 @@
                 }
             }
         }elseif (!empty($_GET['numMembre'])) {  // Si on a sélectionné un membre
-            $requete = "SELECT * FROM membre WHERE numMembre = ".$_GET['numMembre'];
-            $req=$bdd->prepare($requete);
-            $req->execute();
-            $resultat=$req->fetch();?>
-            <form method="post">
-                Email :
-                <div class="row">
-                    <div class="col-lg-5">
-                        <input class="form-control" type="text" name="email" value="<?php echo $resultat['email'] ?>">
-                    </div>
-                    <input type="hidden" name="numMembre" value="<?php echo $_GET['numMembre'] ?>">
-                    <div class="col-lg-2">
-                        <button class="btn btn-large btn-primary" type="submit">Mettre à jour</button>
-                    </div>
-                </div><br>
-            </form>
-            <form method="post">
-                Mot de passe :
-                <div class="row">
-                    <div class="col-lg-5">
-                        <input class="form-control" type="password" name="mdp" placeholder="Nouveau mot de passe">
-                    </div>
-                    <div class="col-lg-5">
-                        <input class="form-control" type="password" name="mdp2" placeholder="Confirmer nouveau mot de passe">
-                    </div>
-                    <input type="hidden" name="numMembre" value="<?php echo $_GET['numMembre'] ?>">
-                    <div class="col-lg-2">
-                        <button class="btn btn-large btn-primary" type="submit">Mettre à jour</button>
-                    </div>
-                </div><br>
-            </form>
+            if (!empty($_GET['action']) && $_GET['action'] == 'supprimer') { // Si on a demandé la suppression du membre
+                $requete = "DELETE FROM membre WHERE numMembre = ".$_GET['numMembre'];
+                $req = $bdd->prepare($requete);
+                $req->execute();
+                echo "L'utilisateur a bien été supprimé !";
+            } else { // Si on n'a pas demandé la suppression du membre
+                $requete = "SELECT * FROM membre WHERE numMembre = ".$_GET['numMembre'];
+                $req=$bdd->prepare($requete);
+                $req->execute();
+                $resultat=$req->fetch();
+                echo "<h3>Utilisateur ".$resultat['prenom']." ".$resultat['nom']."</h3>";
+                ?>
+                <form method="post">
+                    Email :
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <input class="form-control" type="text" name="email" value="<?php echo $resultat['email'] ?>">
+                        </div>
+                        <input type="hidden" name="numMembre" value="<?php echo $_GET['numMembre'] ?>">
+                        <div class="col-lg-2">
+                            <button class="btn btn-large btn-primary" type="submit">Mettre à jour</button>
+                        </div>
+                    </div><br>
+                </form>
+                <form method="post">
+                    Mot de passe :
+                    <div class="row">
+                        <div class="col-lg-5">
+                            <input class="form-control" type="password" name="mdp" placeholder="Nouveau mot de passe">
+                        </div>
+                        <div class="col-lg-5">
+                            <input class="form-control" type="password" name="mdp2" placeholder="Confirmer nouveau mot de passe">
+                        </div>
+                        <input type="hidden" name="numMembre" value="<?php echo $_GET['numMembre'] ?>">
+                        <div class="col-lg-2">
+                            <button class="btn btn-large btn-primary" type="submit">Mettre à jour</button>
+                        </div>
+                    </div><br>
+                </form>
+                <button type="button" class="btn btn-danger"><a href="editmembre.php?numMembre=<?php echo $_GET['numMembre'] ?>&action=supprimer" style="color:white;">Supprimer l'utilisateur</a></button>
         <?php
+            }
         } else { // Sinon on affiche la sélection de membre
             echo '
             <form method="post">

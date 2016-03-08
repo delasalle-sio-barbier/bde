@@ -143,7 +143,7 @@
             }
             else {
                 echo '<h1>Gestion des actualités</h1><hr>'; ?>
-                <button type="button" class="btn btn-warning" value="Paiement" onclick="window.location.href='gestionactualite.php'">Créer une nouvelle actualité</button>
+                <button type="button" class="btn btn-primary"><a href="gestionactualite.php?action=ajout" style="color:white;">Créer une nouvelle actualité</a></button>
                 <?php
                 // Select des idées pour le tableau
                 require '../include/connectbdd.php';

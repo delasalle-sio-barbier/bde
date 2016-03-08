@@ -179,7 +179,7 @@
             }
             else {
                 echo '<h1>Gestion des évènements</h1><hr>'; ?>
-                <button type="button" class="btn btn-warning" value="Evènements" onclick="window.location.href='gestionevenement.php?action=ajout'">Créer un évènement</button>
+                <button type="button" class="btn btn-primary"><a href="gestionevenement.php?action=ajout" style="color:white;">Créer un nouvel évènement</a></button>
                 <?php
                 // Select des idées pour le tableau
                 require '../include/connectbdd.php';
