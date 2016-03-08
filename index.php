@@ -15,7 +15,7 @@
             </div>
             <div class="col-md-6">
                 <div class="lp-element">
-                    <h1>Bureau Des Etudiants<br><span class="lighter">Lycée De La Salle</span></h1>
+                    <h1>Bureau Des Etudiants<br><span class="lighter">Lycée de La Salle</span></h1>
                     <p class="lead">
                         <?php
                         require 'include/connectbdd.php';
@@ -46,24 +46,24 @@ End Hero -->
         <div class="row">
             <div class="col-md-6">
                 <div class="lp-element">
-                    <h1>News<br></h1>
+                    <h1>Actualités<br></h1>
                     <?php
-                    $requete = 'SELECT numNews, titre, texte, date FROM news ORDER BY date DESC LIMIT 3';
+                    $requete = 'SELECT numActualite, titre, texte, date FROM actualite ORDER BY date DESC LIMIT 3';
                     $req = $bdd->prepare($requete);
                     $req->execute();
                     while ($row = $req->fetch()) {
                         echo '<div class="tableauaccueil">';
                         echo '  <div style="float: left;">';
-                        echo '      <strong><a href="news.php?numNews='.$row['numNews'].'">' . $row['titre'] . '</a></strong>';
+                        echo '      <strong><a href="actualite.php?numActualite='.$row['numActualite'].'">' . $row['titre'] . '</a></strong>';
                         echo '  </div><br><hr>';
                         $chaine = $row['texte'];
                         $len = 250;
 
                         if (strlen($chaine) >= $len) {
                             echo $chaine = substr($chaine,0,$len) . "..." ;
-                            echo '<p style="text-align: right;"><a href="news.php?numNews='.$row['numNews'].'">En savoir plus ››</a></p>';
+                            echo '<p style="text-align: right;"><a href="actualite.php?numActualite=' .$row['numActualite'].'">En savoir plus ››</a></p>';
                         } else {
-                            echo '<p style="text-align: right;"><a href="news.php?numNews='.$row['numNews'].'">En savoir plus ››</a></p>';
+                            echo '<p style="text-align: right;"><a href="actualite.php?numActualite=' .$row['numActualite'].'">En savoir plus ››</a></p>';
                         }
                         echo '</div>';
                     }

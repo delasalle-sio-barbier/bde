@@ -4,7 +4,7 @@
         <!-- Meta, title, CSS, favicons, etc. -->
         <meta charset="utf-8" name="viewport" content="width=device-width">
 
-        <title>BDE - Lycée De La Salle</title>
+        <title>BDE - Lycée de La Salle</title>
 
         <!-- JQUERY -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>

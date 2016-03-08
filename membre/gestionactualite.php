@@ -27,28 +27,28 @@
         {
             // si l'action est un ajout
             if (@$_GET['action'] == 'ajout') {
-                echo '<h1>Création d\'une news</h1><hr>';
+                echo '<h1>Création d\'une actualité</h1><hr>';
                 if (!empty($_POST)) {
                     if ((isset($_POST['titre']) && !empty($_POST['url'])) && (isset($_POST['texte']))) {
                         require '../include/connectbdd.php';
-                        $requete = "INSERT INTO news (titre, texte, date, url, numCategorie) ";
+                        $requete = "INSERT INTO actualite (titre, texte, date, url, numCategorie) ";
                         $requete .= " VALUES (:titre, :texte, CURDATE(), :url, 1)";
                         $req = $bdd->prepare($requete);
                         $req->execute(array('titre' => $_POST['titre'], 'texte' => $_POST['texte'], 'url' => $_POST['url']));
-                        echo "La news a bien été créée !";
-                        header('refresh:5; url=gestionnews.php');
+                        echo "L'actualité a bien été créée !";
+                        header('refresh:5; url=gestionactualite.php');
                         ob_flush();
                         $req->closeCursor();
                     }else {
                         echo '<b>Erreur d\'ajout : </b><br>Au moins un des champs est vide.';
-                        header('refresh:5; url=gestionnews.php?action=ajout');
+                        header('refresh:5; url=gestionactualite.php?action=ajout');
                         ob_flush();
                     }
                 } else { ?>
                     <form method="post">
                         <div class="row">
                             <div class="col-lg-12">
-                                <label for="titre"> Titre de la news : </label>
+                                <label for="titre"> Titre de l'actualité : </label>
                                 <input class="form-control" type="text" placeholder="Titre" name="titre">
                             </div>
                         </div><br>
@@ -75,27 +75,27 @@
             }
             // si l'action est une modification
             elseif (@$_GET['action'] == 'modifier') {
-                echo '<h1>Modication d\'une news</h1><hr>';
+                echo '<h1>Modication d\'une actualite</h1><hr>';
                 if (!empty($_POST)) {
                     if ((isset($_POST['titre']) && !empty($_POST['url'])) && (isset($_POST['texte']))) {
                         require '../include/connectbdd.php';
 
-                        $requete = "UPDATE news SET titre = :titre, texte = :texte, url = :url WHERE numNews = ".$_GET['id'].";";
+                        $requete = "UPDATE actualite SET titre = :titre, texte = :texte, url = :url WHERE numActualite = ".$_GET['id'].";";
                         $req = $bdd->prepare($requete);
                         $req->execute(array('titre' => $_POST['titre'], 'texte' => $_POST['texte'], 'url' => $_POST['url']));
-                        echo "La news a bien été modifiée !";
-                        header('refresh:5; url=gestionnews.php');
+                        echo "L'actualité a bien été modifiée !";
+                        header('refresh:5; url=gestionactualite.php');
                         ob_flush();
                         $req->closeCursor();
                     }else {
                         echo '<b>Erreur d\'ajout : </b><br>Au moins un des champs est vide.';
-                        header('refresh:5; url=gestionnews.php?action=modifier');
+                        header('refresh:5; url=gestionactualite.php?action=modifier');
                         ob_flush();
                     }
                 } else {
                     require '../include/connectbdd.php';
-                    $numNews = $_GET['id'];
-                    $requete = "SELECT * FROM news WHERE numNews = '$numNews';";
+                    $numActualite = $_GET['id'];
+                    $requete = "SELECT * FROM actualite WHERE numActualite = '$numActualite';";
                     $req = $bdd->prepare($requete);
                     $req->execute();
                     $donnees = $req->fetch();
@@ -104,7 +104,7 @@
                     <form method="post">
                         <div class="row">
                             <div class="col-lg-12">
-                                <label for="titre"> Titre de la news : </label>
+                                <label for="titre"> Titre de l'actualité : </label>
                                 <input class="form-control" type="text" value="<?php echo $donnees['titre']; ?>" name="titre">
                             </div>
                         </div><br>
@@ -132,22 +132,22 @@
             // si l'action est une supprésion
             elseif (@$_GET['action'] == 'supprimer') {
                 require '../include/connectbdd.php';
-                $requete = "DELETE FROM news WHERE numNews = " . $_GET['id'] . ";";
+                $requete = "DELETE FROM actualite WHERE numActualite = " . $_GET['id'] . ";";
                 $req = $bdd->prepare($requete);
                 $req->execute();
-                echo '<h1>Suppression d\'une news</h1><hr>';
-                echo "La suppression de la news a bien été effectuée !";
-                header('refresh:5; url=gestionnews.php');
+                echo '<h1>Suppression d\'une actualité</h1><hr>';
+                echo "La suppression de l'actualité a bien été effectuée !";
+                header('refresh:5; url=gestionactualite.php');
                 ob_flush();
                 $req->closeCursor();
             }
             else {
-                echo '<h1>Gestion des news</h1><hr>'; ?>
-                <button type="button" class="btn btn-warning" value="Paiement" onclick="window.location.href='gestionnews.php?action=ajout'">Créer une nouvelle news</button>
+                echo '<h1>Gestion des actualités</h1><hr>'; ?>
+                <button type="button" class="btn btn-warning" value="Paiement" onclick="window.location.href='gestionactualite.php'">Créer une nouvelle actualité</button>
                 <?php
                 // Select des idées pour le tableau
                 require '../include/connectbdd.php';
-                $requete = "SELECT * FROM news";
+                $requete = "SELECT * FROM actualite";
                 $req = $bdd->prepare($requete);
                 $req->execute();
                 echo '<br>
@@ -165,8 +165,8 @@
                             <td>'.substr($row['texte'],0,50).'...</td>
                             <td>'.$row['date'].'</td>
                             <td>
-                                <a href="gestionnews.php?action=modifier&id='.$row['numNews'].'" title="Modifier la news" style="color:orange"><i class="fa fa-pencil"></i>&nbsp;&nbsp;&nbsp;</a>
-                                <a href="gestionnews.php?action=supprimer&id='.$row['numNews'].'" title="Supprimer la news" style="color:red"><i class="fa fa-trash"></i></a>
+                                <a href="gestionactualite.php?action=modifier&id='.$row['numActualite'].'" title="Modifier l\'actualite" style="color:orange"><i class="fa fa-pencil"></i>&nbsp;&nbsp;&nbsp;</a>
+                                <a href="gestionactualite.php?action=supprimer&id='.$row['numActualite'].'" title="Supprimer l\'actualite" style="color:red"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                         ';

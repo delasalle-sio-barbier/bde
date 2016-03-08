@@ -171,7 +171,7 @@
                 $requete = "DELETE FROM evenement WHERE numEvenement = " . $_GET['id'] . ";";
                 $req = $bdd->prepare($requete);
                 $req->execute();
-                echo '<h1>Suppression d\'une news</h1><hr>';
+                echo '<h1>Suppression d\'une actualité</h1><hr>';
                 echo "La suppression de l'évènement a bien été effectuée !";
                 header('refresh:5; url=gestionevenement.php');
                 ob_flush();
