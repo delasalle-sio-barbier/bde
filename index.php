@@ -48,7 +48,7 @@ End Hero -->
                 <div class="lp-element">
                     <h1>Actualités<br></h1>
                     <?php
-                    $requete = 'SELECT numActualite, titre, texte, date FROM actualite ORDER BY date DESC LIMIT 3';
+                    $requete = 'SELECT numActualite, titre, texte, date, url FROM actualite ORDER BY date DESC LIMIT 3';
                     $req = $bdd->prepare($requete);
                     $req->execute();
                     while ($row = $req->fetch()) {
@@ -61,9 +61,9 @@ End Hero -->
 
                         if (strlen($chaine) >= $len) {
                             echo $chaine = substr($chaine,0,$len) . "..." ;
-                            echo '<p style="text-align: right;"><a href="actualite.php?numActualite=' .$row['numActualite'].'">En savoir plus ››</a></p>';
+                            echo '<p style="text-align: right;"><a href="article/' .$row['url'].'/">En savoir plus ››</a></p>';
                         } else {
-                            echo '<p style="text-align: right;"><a href="actualite.php?numActualite=' .$row['numActualite'].'">En savoir plus ››</a></p>';
+                            echo '<p style="text-align: right;"><a href="article/' .$row['url'].'/">En savoir plus ››</a></p>';
                         }
                         echo '</div>';
                     }

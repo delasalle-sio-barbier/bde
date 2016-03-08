@@ -2,6 +2,7 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/.htaccess" charset="windows-1252" />
     <file url="file://$PROJECT_DIR$/actualite.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/include/Outils.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/include/connectbdd.php" charset="UTF-8" />

@@ -1,0 +1,11 @@
+RewriteEngine on
+
+RewriteRule accueil/ index.php
+RewriteRule actualite/ actualite.php
+RewriteRule evenement/ evenement.php
+RewriteRule album/ album.php
+RewriteRule contact/ contact.php
+RewriteRule mentions-legales/ mentionlegale.php
+
+RewriteRule galerie/([a-zA-Z0-9\-]+)/ galerie.php?url=$1
+RewriteRule article/([a-zA-Z0-9\-]+)/ actualite.php?url=$1

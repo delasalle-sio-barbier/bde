@@ -17,6 +17,8 @@
 
         <?php
         if (strstr($_SERVER['REQUEST_URI'], '/membre/')){?>
+            <base href="http://localhost/bde/membre/">
+
             <!-- Latest compiled and minified CSS -->
             <link rel="stylesheet" href="../style/bootstrap.min.css">
 
@@ -32,6 +34,8 @@
             <!-- Favicons -->
             <link rel="shortcut icon" href="../style/images/logo_bde.png">
         <?php } else { ?>
+            <base href="http://localhost/bde/">
+
             <!-- Latest compiled and minified CSS -->
             <link rel="stylesheet" href="style/bootstrap.min.css">
 

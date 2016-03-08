@@ -9,8 +9,9 @@
                 <h1>Actualités<br></h1>
                 <?php
                 require 'include/connectbdd.php';
-                if (!empty($_GET['numActualite'])) {
-                    $requete = 'SELECT numActualite, titre, texte, date FROM actualite WHERE numActualite = '.$_GET['numActualite'];
+                if (!empty($_GET['url'])) {
+                    $url = $_GET['url'];
+                    $requete = "SELECT numActualite, titre, texte, date, url FROM actualite WHERE url = '$url';";
                     $req = $bdd->prepare($requete);
                     $req->execute();
                     $resultat = $req->fetch();
@@ -24,13 +25,13 @@
                     echo '</div>';
                     echo '</div>';
                 }else{
-                    $requete = 'SELECT numActualite, titre, texte, date FROM actualite ORDER BY date DESC';
+                    $requete = 'SELECT numActualite, titre, texte, date, url FROM actualite ORDER BY date DESC';
                     $req = $bdd->prepare($requete);
                     $req->execute();
                     while ($row = $req->fetch()) {
                         echo '<div class="tableauaccueil">';
                         echo '  <div style="float: left;">';
-                        echo '      <strong><a href="actualite.php?numActualite=' .$row['numActualite'].'">' . $row['titre'] . '</a></strong>';
+                        echo '      <strong><a href="article/' .$row['url'].'/">' . $row['titre'] . '</a></strong>';
                         echo '  </div>';
                         echo '  <div style="float: right;">';
                         echo '      <strong>' . Outils::date_fr(strtotime($row['date']), 'l j F Y') . '</strong>';
@@ -40,9 +41,9 @@
 
                         if (strlen($chaine) >= $len) {
                             echo $chaine = substr($chaine,0,$len) . "..." ;
-                            echo '<p style="text-align: right;"><a href="actualite.php?numActualite=' .$row['numActualite'].'">En savoir plus ››</a></p>';
+                            echo '<p style="text-align: right;"><a href="article/' .$row['url'].'/">En savoir plus ››</a></p>';
                         } else {
-                            echo '<p style="text-align: right;"><a href="actualite.php?numActualite=' .$row['numActualite'].'">En savoir plus ››</a></p>';
+                            echo '<p style="text-align: right;"><a href="article/' .$row['url'].'/">En savoir plus ››</a></p>';
                         }
                         echo '</div>';
                     }

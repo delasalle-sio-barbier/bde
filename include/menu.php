@@ -7,23 +7,23 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-			<a class="navbar-brand" href="index.php">BDE - <span class="lighter">Lycée de La Salle</span></a>
+			<a class="navbar-brand" href="accueil/">BDE - <span class="lighter">Lycée de La Salle</span></a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class = "nav navbar-nav navbar-right">
                 <?php
                 if (strstr($_SERVER['REQUEST_URI'], '/membre/')){
-                    echo '<li><a href="../index.php">Accueil</a></li>';
-                    echo '<li><a href="../actualite.php">Actualités</a></li>';
-                    echo '<li><a href="../evenement.php">Evenements</a></li>';
-                    echo '<li><a href="../album.php">Galerie</a></li>';
-                    echo '<li><a href="../contact.php">Contact</a></li>';
+                    echo '<li><a href="../accueil/">Accueil</a></li>';
+                    echo '<li><a href="../actualite/">Actualités</a></li>';
+                    echo '<li><a href="../evenement/">Evenements</a></li>';
+                    echo '<li><a href="../album/">Galerie</a></li>';
+                    echo '<li><a href="../contact/">Contact</a></li>';
                 } else {
-                    echo '<li><a href="index.php">Accueil</a></li>';
-                    echo '<li><a href="actualite.php">Actualités</a></li>';
-                    echo '<li><a href="evenement.php">Evenements</a></li>';
-                    echo '<li><a href="album.php">Galerie</a></li>';
-                    echo '<li><a href="contact.php">Contact</a></li>';
+                    echo '<li><a href="accueil/">Accueil</a></li>';
+                    echo '<li><a href="actualite/">Actualités</a></li>';
+                    echo '<li><a href="evenement/">Evenements</a></li>';
+                    echo '<li><a href="album/">Galerie</a></li>';
+                    echo '<li><a href="contact/">Contact</a></li>';
                 }
                 ?>
                 <li class = "dropdown">

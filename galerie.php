@@ -92,7 +92,8 @@
     <ul class="row">
         <?php
         require 'include/connectbdd.php';
-        $requete = 'SELECT numPhoto, nomPhoto, urlPhoto FROM photo WHERE numAlbum = '.$_GET["numAlbum"].' ORDER BY numPhoto';
+        $url = $_GET["url"];
+        $requete = "SELECT numPhoto, nomPhoto, urlPhoto, url FROM photo, album WHERE photo.numAlbum = album.numAlbum AND url = '$url' ORDER BY numPhoto";
         $req = $bdd->prepare($requete);
         $req->execute();
         $compteur = 0;
