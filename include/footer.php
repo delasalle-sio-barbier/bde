@@ -30,12 +30,13 @@
                     Bureau des étudiants, association du<br>
                     <?php
                     if (strstr($_SERVER['REQUEST_URI'], '/membre/')){
-                        echo '<a href="http://www.lycee-delasalle.com/" target="_blank"><img src="../style/images/logo_dls.png" alt="facebook"/></a>';
+                        echo '<a href="http://www.lycee-delasalle.com/" target="_blank"><img src="../style/images/logo_dls.png" alt="facebook"/></a>
+                                <p>Copyright&copy; 2015-2016 | <a href="../mentionlegale.php">Mentions légales</a><br>';
                     } else {
-                        echo '<a href="http://www.lycee-delasalle.com/" target="_blank"><img src="style/images/logo_dls.png" /></a>';
+                        echo '<a href="http://www.lycee-delasalle.com/" target="_blank"><img src="style/images/logo_dls.png" /></a>
+                                <p>Copyright&copy; 2015-2016 | <a href="mentionlegale.php">Mentions légales</a><br>';
                     }
                     ?>
-                    <p>Copyright&copy; 2015-2016 | <a href="#">Mentions légales</a><br>
                     Projet réalisé par les étudiants de <b> BTS SIO</b></p><br><br>
                 </div>
             </div>
