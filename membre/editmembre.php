@@ -63,7 +63,7 @@
                     <div class="col-lg-6">
                         <select id="listemembre" name="membre" onchange="change_valeur()">
                         <option>Membre</option>';
-            $requete = "SELECT * FROM membre WHERE deleteallow = 0";
+            $requete = "SELECT * FROM membre";
             $req = $bdd->prepare($requete);
             $req->execute();
             while ($row = $req->fetch()) {
