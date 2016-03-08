@@ -45,20 +45,46 @@
                         ob_flush();
                     }
                 } else { ?>
-                    <form method="post">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <label for="titre"> Titre de l'actualité : </label>
-                                <input class="form-control" type="text" placeholder="Titre" name="titre">
-                            </div>
-                        </div><br>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <label for="url"> URL : </label>
-                                <input class="form-control" type="text" placeholder="Url" name="url">
-                            </div>
-                        </div><br>
-                        <div class="row">
+                <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+                <script>
+                    String.prototype.replaceAll = function(search, replacement) {
+                        //ajout de la fonction replaceAll
+                        var target = this;
+                        return target.replace(new RegExp(search, 'g'), replacement);
+                    };
+
+                    var app = angular.module('module', []);//Le module
+
+                    app.filter('modif',function(){//le filtre = fct qui modifie
+                        return function(input) {
+
+                            input = input.replaceAll(" " , "-");
+                            input = input.replaceAll("'" , "-");
+                            input = input.replaceAll("é" , "e");
+                            input = input.replaceAll("à" , "a");
+                            input = input.replaceAll("è" , "e");
+                            input = input.replaceAll("ù" , "u");
+                            input = input.replaceAll("î" , "i");
+                            input = input.replaceAll("ï" , "i");
+                            input = input.replaceAll("ç" , "c");
+                            return input;
+                        }
+                    });</script>
+            <form method="post" ng-app="module">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <label for="titre"> Titre de l'actualité : </label>
+                        <input class="form-control" type="text" ng-model="titre"  name="titre">
+                    </div>
+                </div><br>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <label for="url"> URL : </label>
+                        <input class="form-control" type="text" ng-value="titre | modif | lowercase" name="url">
+                    </div>
+                </div><br>
+
+                <div class="row">
                             <div class="col-lg-12">
                                 <label for="texte"> Texte : </label>
                                 <textarea class="form-control" rows="10" id="mytextarea" name="texte"></textarea>
