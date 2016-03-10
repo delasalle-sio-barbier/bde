@@ -15,7 +15,7 @@
             }elseif (!empty($_POST['mdp'] && !empty($_POST['mdp2']) && !empty($_POST['numMembre']))) {   // Si on a sélectionné un membre
                 if ($_POST['mdp'] == $_POST['mdp2']){
                     /*on crypte le mot de passe pour faire le test*/
-                    $mdphache = sha1($_POST['mdp']);
+                    $mdphache = md5($_POST['mdp']);
                     $req = $bdd->prepare('UPDATE membre SET mdp = :mdp WHERE numMembre = :numMembre');
                     $req->execute(array('mdp' => $mdphache, 'numMembre' => $_POST['numMembre']));
                     echo 'Le mot de passe du membre a bien été modifié !';
