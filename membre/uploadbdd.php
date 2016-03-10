@@ -1,49 +1,51 @@
-<?php include('../include/head.php'); ?>
+<?php
+header('Content-Type: text/html; charset=UTF-8');
+include('../include/head.php'); ?>
 <?php include('../include/menu.php'); ?>
 <div class="container">
     <?php
-    if(isset($_SESSION['numMembre']) && $_SESSION['privilege'] == 'owner') {
-        echo '<h1>Ajout des membres</h1><hr>';
-        $fichier = basename($_FILES['bdd']['name']);
-        $taille_maxi = 100000;
-        $taille = filesize($_FILES['bdd']['tmp_name']);
-        //Début des vérifications de sécurité...
-        if (strrchr($_FILES['bdd']['name'], '.') != '.sql') //Si l'extension n'est pas égale à .sql
-        {
-            $erreur = 'Vous devez uploader un fichier de type sql...';
-        }
-        if ($taille > $taille_maxi) {
-            $erreur = 'Le fichier est trop gros...';
-        }
-        if (!isset($erreur)) //S'il n'y a pas d'erreur, on upload
-        {
-            //On formate le nom du fichier ici...
-            $fichier = strtr($fichier,
-                'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ',
-                'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
-            $fichier = preg_replace('/([^.a-z0-9]+)/i', '-', $fichier);
-            if (move_uploaded_file($_FILES['bdd']['tmp_name'], $fichier)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
-            {
-                // On exécute toutes les requetes du fichier une par une
-                require '../include/connectbdd.php';
-                $sql = file_get_contents($fichier);
-                $sql_array = explode(";", $sql);
-                unlink($fichier);
-                echo "
-            <div class='alert alert-success'>
-                <strong>Succès :</strong> Tous les utilisateurs on été ajoutés avec succès ! (Les erreurs affichées sont à coriger, mais l'upload marche)
-            </div>";
-                foreach ($sql_array as $requete) {
-                    $bdd->exec($requete);
+    function convertir_utf8($url){
+        $contenu_fichier_non_utf8 ='';
+        $file_content = file_get_contents($url);
+        if(preg_match('/./u', $file_content)){
+            return ('Fichier en UTF-8');
+        }else{
+            if (file_exists($url)) {
+                $inF = fopen($url,"r");
+                while (!feof($inF)) {
+                    $contenu_fichier_non_utf8.= fgets($inF, 4096);
                 }
-            } else //Sinon (la fonction renvoie FALSE).
-            {
-                echo 'Echec de l\'upload !';
+                $contenu_fichier_modifier_en_utf8 = utf8_encode ($contenu_fichier_non_utf8);
             }
-        } else {
-            echo $erreur;
+            $fichier = fopen($url,'w+');
+            fputs($fichier,$contenu_fichier_modifier_en_utf8);
+            fclose($fichier);
+            return 'Fichier Converti en UTF-8 !';
         }
     }
+
+    if(isset($_SESSION['numMembre']) && $_SESSION['privilege'] == 'owner') {
+        echo '<h1>Ajout des membres</h1><hr>';
+        // Connexion à la BDD
+        require '../include/connectbdd.php';
+        // UPLOAD DU FICHIER CSV, vérification et insertion en BASE
+        if ($_FILES["file"]["type"] != "application/vnd.ms-excel") {
+            die("Ce n'est pas un fichier de type .csv");
+        } elseif (is_uploaded_file($_FILES['file']['tmp_name'])) {
+            convertir_utf8($_FILES['file']['tmp_name']);
+            //Process the CSV file
+            $handle = fopen($_FILES['file']['tmp_name'], "r");
+            $data = fgetcsv($handle, 1000, ";"); //Remove if CSV file does not have column headings
+            while (($data = fgetcsv($handle, 1000, ";")) !== FALSE) {
+                $req = $bdd->prepare('INSERT INTO membre (nom, prenom, classe, email, identifiant, mdp) VALUES (:nom,:prenom,:classe,:email,:identifiant,:mdp)');
+                $req->execute(array('nom' => $data[0], 'prenom' => $data[1], 'classe' => $data[2], 'email' => $data[3], 'identifiant' => $data[4], 'mdp' => $data[5]));
+            }
+            echo 'Les nouveaux membres ont été ajoutés';
+        } else {
+            die("Vous ne devriez pas être là");
+        }
+        $req->closeCursor();
+    }
     ?>
-</div> <!-- /container -->
+</div><br> <!-- /container -->
 <?php include('../include/footer.php'); ?>
