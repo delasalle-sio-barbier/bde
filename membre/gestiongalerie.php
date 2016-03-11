@@ -4,84 +4,158 @@
         <?php
         /* si le membre est connecte*/
         if(isset($_SESSION['numMembre']) && ($_SESSION['privilege'] == 'admin' || $_SESSION['privilege'] == 'owner'))
-        { ?>
-            <h1>Gestion de la galerie</h1><hr>
-            <ul>
-                <li><a href="newalbum.php" style="text-decoration : underline;">Créer un nouvel album</a></li>
-            </ul>
-            <?php require '../include/connectbdd.php';?>
-            <br><br><hr>
-            <?php
-            if(!empty($_POST) && isset($_POST['upload']) && !empty($_GET['numAlbum'])) { // si formulaire soumis
-                $content_dir = '../style/images/galerie/'; // dossier où sera déplacé le fichier
+        {
+            // si l'action est une ajout d'album
+            if (@$_GET['action'] == 'ajoutalbum') {
+                echo '<h1>Création d\'un album</h1><hr>';
+            if(!empty($_POST) && isset($_POST['upload'])) { // si formulaire soumis
+                $url = str_replace(" ","-",$_POST['url']);
+                $url = strtr($url, 'ÁÀÂÄÃÅÇÉÈÊËÍÏÎÌÑÓÒÔÖÕÚÙÛÜÝ', 'AAAAAACEEEEEIIIINOOOOOUUUUY');
+                $url = strtr($url, 'áàâäãåçéèêëíìîïñóòôöõúùûüýÿ', 'aaaaaaceeeeiiiinooooouuuuyy');
+                require '../include/connectbdd.php';
+                $requete = "INSERT INTO album (titre, dateCreation, url) ";
+                $requete .= " VALUES (:titre, CURDATE(), :url)";
+                $req=$bdd->prepare($requete);
+                $req->execute(array('titre'=>$_POST['titre'], 'url'=>$url));
+                $req->closeCursor();
+                echo "L'album a bien été créé !";
+            } else { ?>
+                                <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+                <script>
+                    String.prototype.replaceAll = function(search, replacement) {
+                        //ajout de la fonction replaceAll
+                        var target = this;
+                        return target.replace(new RegExp(search, 'g'), replacement);
+                    };
 
-                $tmp_file = $_FILES['fichier']['tmp_name'];
+                    var app = angular.module('module', []);//Le module
 
-                // on vérifie maintenant l'extension
-                $type_file = $_FILES['fichier']['type'];
+                    app.filter('modif',function(){//le filtre = fct qui modifie
+                        return function(input) {
 
-                if( !is_uploaded_file($tmp_file) ) {
-                    echo "Le fichier est introuvable";
-                } elseif( !strstr($type_file, 'jpg') && !strstr($type_file, 'jpeg') && !strstr($type_file, 'bmp') && !strstr($type_file, 'gif') && !strstr($type_file, 'png') ) {
-                    echo "Le fichier n'est pas une image";
-                } else {
-                    // on copie le fichier dans le dossier de destination
-                    $taille_chaine = strlen($_FILES['fichier']['name']);
-                    $name_file = substr($_FILES['fichier']['name'], 0, -4).'-'.time().'.'.substr($_FILES['fichier']['type'], -3);
+                            input = input.replaceAll(" " , "-");
+                            input = input.replaceAll("'" , "-");
+                            input = input.replaceAll("é" , "e");
+                            input = input.replaceAll("à" , "a");
+                            input = input.replaceAll("è" , "e");
+                            input = input.replaceAll("ù" , "u");
+                            input = input.replaceAll("î" , "i");
+                            input = input.replaceAll("ï" , "i");
+                            input = input.replaceAll("ç" , "c");
+                            return input;
+                        }
+                    });</script>
 
-                    if( !move_uploaded_file($tmp_file, $content_dir . $name_file) )
-                    {
-                        echo "Impossible de copier le fichier dans $content_dir";
-                    } else{
-                        echo "L'image a bien été ajoutée";
-                        $req = $bdd->prepare('INSERT INTO photo (nomPhoto, urlPhoto, numAlbum) VALUES (:nomPhoto,:urlPhoto,:numAlbum)');
-                        $req->execute(array('nomPhoto' => $_POST['nomPhoto'], 'urlPhoto' => $name_file, 'numAlbum' => $_POST['numAlbum']));
-                    }
+            <form method="post">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <label for="titre"> Titre de l'album : </label>
+                        <input class="form-control" type="text" ng-model="titre"  name="titre">
+                    </div>
+                </div><br>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <label for="url"> URL : </label>
+                        <input class="form-control" type="text" ng-value="titre | modif | lowercase" name="url">
+                    </div>
+                </div><br>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <button class="btn btn-large btn-primary" name="upload" type="submit">Envoyer</button>
+                        </div>
+                    </div>
+                </form>
+
+                <?php
                 }
-            } elseif (!empty($_GET['numAlbum'])) {  // Si on a sélectionné un album
-                $requete = "SELECT titre FROM album WHERE numAlbum = ".$_GET['numAlbum'];
+            }
+            // si l'action est une ajout de photo dans un album
+            elseif (@$_GET['action'] == 'ajoutphoto') {
+                echo '<h1>Ajout de photo dans l\'album : </h1>';
+                // a faire
+            }
+
+            // si l'action est une liste des photos
+            elseif (@$_GET['action'] == 'listephoto') {
+                echo '<h1>Liste des photos de l\'album : </h1>';
+                        require '../include/connectbdd.php';
+        $numPhoto = $_GET["id"];
+        $requete = "SELECT * FROM photo WHERE numALbum = '$numPhoto' ORDER BY numPhoto";
+        $req = $bdd->prepare($requete);
+        $req->execute();
+        $compteur = 0;
+        while ($row = $req->fetch()) {
+            $numPhoto = $row['numPhoto'];
+            echo '<li class="col-lg-2 col-md-2 col-sm-4 col-xs-4 col-xxs-12">';
+            echo '<img class="img-responsive" src="../style/images/galerie/'.$row["urlPhoto"].'">';
+            echo '<div class="text-center" style="margin-top: 5px;"><a href="gestiongalerie.php?action=supprimerphoto&numPhoto='.$numPhoto.'" title="Supprimer la photo" style="color:red"><i class="fa fa-trash"></i></a></div>';
+
+        }
+        $req->closeCursor();
+            }
+            // si l'action est une suppression d'album avec les photos avec
+            elseif (@$_GET['action'] == 'supprimeralbum') {
+                require '../include/connectbdd.php';
+                $requeteAlbum = "DELETE FROM album WHERE numAlbum = " . $_GET['id'] . ";";
+                $requetePhoto = "DELETE FROM photo WHERE numAlbum = " . $_GET['id'] . ";";
+                $reqPhoto = $bdd->prepare($requetePhoto);
+                $reqAlbum = $bdd->prepare($requeteAlbum);
+
+                $reqAlbum->execute();
+                $reqPhoto->execute();
+                echo '<h1>Suppression d\'un album : </h1><hr>';
+                echo "La suppression de l'album avec tous les photos a bien été effectuée !";
+                header('refresh:5; url=gestiongalerie.php');
+                ob_flush();
+                $reqPhoto->closeCursor();
+                $reqAlbum->closeCursor();
+            }
+            // si l'action est une suppression de photo d'un album
+            elseif (@$_GET['action'] == 'supprimerphoto') {
+                require '../include/connectbdd.php';
+                $requetePhoto = "DELETE FROM photo WHERE numPhoto = " . $_GET['numPhoto'] . ";";
+                $reqPhoto = $bdd->prepare($requetePhoto);
+                $reqPhoto->execute();
+                echo '<h1>Suppression d\'une photo : </h1><hr>';
+                echo "La suppression de la photo a bien été effectuée !";
+                header('refresh:5; url=gestiongalerie.php');
+                ob_flush();
+                $reqPhoto->closeCursor();
+            }
+            else {
+                echo '<h1>Gestion de la galerie</h1><hr>'; ?>
+                <button type="button" class="btn btn-primary"><a href="gestiongalerie.php?action=ajoutalbum" style="color:white;">Créer un nouvel album</a></button><br><br>
+                <?php
+                // Select des idées pour le tableau
+                require '../include/connectbdd.php';
+                $requete = "SELECT * FROM album";
                 $req = $bdd->prepare($requete);
                 $req->execute();
-                $resultat = $req->fetch();
-                echo "<h3>Ajouter une nouvelle photo dans l'album ".$resultat['titre']."</h3>"?>
-                <form method="post" enctype="multipart/form-data">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <input class="form-control" type="text" placeholder="Nom de la photo (optionnel)" name="nomPhoto">
-                        </div>
-                    </div><br>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <input type="file" name="fichier" size="30">
-                        </div>
-                    </div><br>
-                    <input type="hidden" name="numAlbum" value="<?php echo $_GET['numAlbum'] ?>">
-                    <div class="row">
-                        <button class="btn btn-large btn-primary" name="upload" type="submit">Envoyer</button>
-                    </div>
-                </form>
-            <?php
-            } else { // Sinon on affiche la sélection de membre
                 echo '
-                <h3>Ajouter une nouvelle photo</h3>
-                <form method="post">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <select id="listealbum" name="membre" onchange="change_valeur()">
-                                <option>Album</option>';
-                                $requete = "SELECT * FROM album";
-                                $req = $bdd->prepare($requete);
-                                $req->execute();
-                                while ($row = $req->fetch()) {
-                                    echo '<option value="'.$row['numAlbum'].'">'.$row['titre'].'</option>';
-                                } ?>
-                            </select>
-                        </div>
-                    </div>
-                </form>
+            <table class="table">
+                <tr>
+                    <th>Album</th>
+                     <th>Nombres de photos</th>
+                    <th>Options</th>
+                </tr>';
+                while ($row = $req->fetch()) {
+                    echo '
+                <tr>
+                    <td>'.$row['titre'].'</td>
+                    <td>0 photos</td>
+
+                    <td>'; ?>
+                        <a href="gestiongalerie.php?action=ajoutphoto&id=<?php echo $row['numAlbum']; ?>" title="Ajouter des photos" style="color:green"><i class="fa fa-plus"></i></a>&nbsp;&nbsp;&nbsp;
+                        <a href="gestiongalerie.php?action=listephoto&id=<?php echo $row['numAlbum']; ?>" title="Liste des photos" style="color:blue"><i class="fa fa-list"></i></a>&nbsp;&nbsp;&nbsp;
+                        <a href="gestiongalerie.php?action=supprimeralbum&id=<?php echo $row['numAlbum']; ?>" title="Supprimer l'album" style="color:red"><i class="fa fa-trash"></i></a>
+                    </td>
+                </tr>
                 <?php
+                }
+                echo '</table>';
+                $req->closeCursor();
             }
-            $req->closeCursor();
+
         }
         else
         {
