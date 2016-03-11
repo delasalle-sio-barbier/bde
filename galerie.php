@@ -87,7 +87,15 @@
 
 <section class="container galerie">
     <div class="row">
-        <h1><center>Galerie</center></h1><hr>
+        <?php
+            require 'include/connectbdd.php';
+            $url = $_GET["url"];
+            $requete = "SELECT * FROM photo, album WHERE photo.numAlbum = album.numAlbum AND url = '$url'";
+            $req = $bdd->prepare($requete);
+            $req->execute();
+            $row = $req->fetch();
+        ?>
+        <h1>Galerie : <?php echo $row["titre"]; ?></h1><hr>
     </div>
     <ul class="row">
         <?php

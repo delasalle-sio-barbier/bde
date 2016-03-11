@@ -92,6 +92,7 @@ End Hero -->
                             echo $chaine = substr($chaine,0,$len) . "..." ;
                             echo '<p style="text-align: right;"><a href="agenda/' .$row['url'].'/">En savoir plus ››</a></p>';
                         } else {
+                            echo $chaine;
                             echo '<p style="text-align: right;"><a href="agenda/' .$row['url'].'/">En savoir plus ››</a></p>';
                         }
                         echo '</div>';

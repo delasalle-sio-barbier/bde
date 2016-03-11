@@ -4,7 +4,7 @@
 ================================================== -->
     <section class="container galerie">
         <div class="row">
-            <h1><center>Albums</center></h1><hr>
+            <h1>Albums</h1><hr>
         </div>
         <ul class="row">
             <?php
