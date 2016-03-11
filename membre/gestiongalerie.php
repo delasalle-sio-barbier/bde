@@ -9,61 +9,35 @@
             if (@$_GET['action'] == 'ajoutalbum') {
                 echo '<h1>Création d\'un album</h1><hr>';
             if(!empty($_POST) && isset($_POST['upload'])) { // si formulaire soumis
-                $url = str_replace(" ","-",$_POST['url']);
-                $url = strtr($url, 'ÁÀÂÄÃÅÇÉÈÊËÍÏÎÌÑÓÒÔÖÕÚÙÛÜÝ', 'AAAAAACEEEEEIIIINOOOOOUUUUY');
-                $url = strtr($url, 'áàâäãåçéèêëíìîïñóòôöõúùûüýÿ', 'aaaaaaceeeeiiiinooooouuuuyy');
                 require '../include/connectbdd.php';
                 $requete = "INSERT INTO album (titre, dateCreation, url) ";
                 $requete .= " VALUES (:titre, CURDATE(), :url)";
                 $req=$bdd->prepare($requete);
-                $req->execute(array('titre'=>$_POST['titre'], 'url'=>$url));
+                $req->execute(array('titre'=>$_POST['titre'], 'url'=>$_POST['url']));
                 $req->closeCursor();
                 echo "L'album a bien été créé !";
             } else { ?>
-                                <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
-                <script>
-                    String.prototype.replaceAll = function(search, replacement) {
-                        //ajout de la fonction replaceAll
-                        var target = this;
-                        return target.replace(new RegExp(search, 'g'), replacement);
-                    };
-
-                    var app = angular.module('module', []);//Le module
-
-                    app.filter('modif',function(){//le filtre = fct qui modifie
-                        return function(input) {
-
-                            input = input.replaceAll(" " , "-");
-                            input = input.replaceAll("'" , "-");
-                            input = input.replaceAll("é" , "e");
-                            input = input.replaceAll("à" , "a");
-                            input = input.replaceAll("è" , "e");
-                            input = input.replaceAll("ù" , "u");
-                            input = input.replaceAll("î" , "i");
-                            input = input.replaceAll("ï" , "i");
-                            input = input.replaceAll("ç" , "c");
-                            return input;
-                        }
-                    });</script>
 
             <form method="post">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <label for="titre"> Titre de l'album : </label>
-                        <input class="form-control" type="text" ng-model="titre"  name="titre">
-                    </div>
-                </div><br>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <label for="url"> URL : </label>
-                        <input class="form-control" type="text" ng-value="titre | modif | lowercase" name="url">
-                    </div>
-                </div><br>
+                <div ng-app="module">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <label for="titre"> Titre de l'album : </label>
+                            <input class="form-control" type="text" ng-model="titre"  name="titre">
+                        </div>
+                    </div><br>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <label for="url"> URL : </label>
+                            <input class="form-control" type="text" ng-value="titre | modif | lowercase" name="url">
+                        </div>
+                    </div><br>
                     <div class="row">
                         <div class="col-lg-12">
                             <button class="btn btn-large btn-primary" name="upload" type="submit">Envoyer</button>
                         </div>
                     </div>
+                </div>
                 </form>
 
                 <?php
