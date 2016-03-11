@@ -35,10 +35,10 @@
                         $dateDebut = $_POST['dateDebut'] . ' ' . $_POST['timeDebut'] . ':00';
                         $dateFin = $_POST['dateFin'] . ' ' . $_POST['timeFin'] . ':00';
                         require '../include/connectbdd.php';
-                        $requete = "INSERT INTO evenement (titre, texte, lieu, dateDebut, dateFin, numCategorie) ";
-                        $requete .= " VALUES (:titre, :texte, :lieu, :dateDebut, :dateFin, 1)";
+                        $requete = "INSERT INTO evenement (titre, texte, lieu, dateDebut, dateFin, url, numCategorie) ";
+                        $requete .= " VALUES (:titre, :texte, :lieu, :dateDebut, :dateFin, :url, 1)";
                         $req = $bdd->prepare($requete);
-                        $req->execute(array('titre' => $_POST['titre'], 'texte' => $_POST['texte'], 'lieu' => $_POST['lieu'], 'dateDebut' => $dateDebut, 'dateFin' => $dateFin));
+                        $req->execute(array('titre' => $_POST['titre'], 'texte' => $_POST['texte'], 'lieu' => $_POST['lieu'], 'dateDebut' => $dateDebut, 'dateFin' => $dateFin, 'url' => $_POST['url']));
                         echo "L'évenement a bien été créé !";
                         header('refresh:5; url=gestionevenement.php');
                         ob_flush();
@@ -50,45 +50,53 @@
                     }
                 } else { ?>
                     <form method="post">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <label for="tire"> Titre de l'évènement : </label>
-                                <input class="form-control" type="text" placeholder="Titre" name="titre">
-                            </div>
-                        </div><br>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <label for="lieu"> Lieu : </label>
-                                <input class="form-control" type="text" placeholder="Lieu" name="lieu">
-                            </div>
-                        </div><br>
-                        <label for="debut"> Début : </label>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <input class="form-control" type="date" name="dateDebut">
-                            </div>
-                            <div class="col-lg-6">
-                                <input class="form-control" type="time" name="timeDebut">
-                            </div>
-                        </div><br>
-                        <label for="fin"> Fin : </label>
-                        <div class="row">
-                            <div class="col-lg-6">
-                                <input class="form-control" type="date" name="dateFin">
-                            </div>
-                            <div class="col-lg-6">
-                                <input class="form-control" type="time" name="timeFin">
-                            </div>
-                        </div><br>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <label for="debut"> Début : </label>
-                                <textarea class="form-control" rows="5" id="mytextarea" name="texte"></textarea>
-                            </div>
-                        </div><br>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <button class="btn btn-large btn-primary" type="submit">Envoyer</button>
+                        <div ng-app="module">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label for="tire"> Titre de l'évènement : </label>
+                                    <input class="form-control" type="text" ng-model="titre" placeholder="Titre" name="titre">
+                                </div>
+                            </div><br>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label for="tire"> URL : </label>
+                                    <input class="form-control" type="text" placeholder="URL" ng-value="titre | modif | lowercase" name="url">
+                                </div>
+                            </div><br>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label for="lieu"> Lieu : </label>
+                                    <input class="form-control" type="text" placeholder="Lieu" name="lieu">
+                                </div>
+                            </div><br>
+                            <label for="debut"> Début : </label>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <input class="form-control" type="date" name="dateDebut">
+                                </div>
+                                <div class="col-lg-6">
+                                    <input class="form-control" type="time" name="timeDebut">
+                                </div>
+                            </div><br>
+                            <label for="fin"> Fin : </label>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <input class="form-control" type="date" name="dateFin">
+                                </div>
+                                <div class="col-lg-6">
+                                    <input class="form-control" type="time" name="timeFin">
+                                </div>
+                            </div><br>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <label for="debut"> Début : </label>
+                                    <textarea class="form-control" rows="5" id="mytextarea" name="texte"></textarea>
+                                </div>
+                            </div><br>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <button class="btn btn-large btn-primary" type="submit">Envoyer</button>
+                                </div>
                             </div>
                         </div>
                     </form>
@@ -124,6 +132,12 @@
                             <div class="col-lg-12">
                                 <label for="tire"> Titre de l'évènement : </label>
                                 <input class="form-control" type="text" placeholder="Titre" value="<?php echo $donnees['titre']; ?>" name="titre">
+                            </div>
+                        </div><br>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <label for="tire"> URL : </label>
+                                <input class="form-control" type="text" placeholder="Url" value="<?php echo $donnees['url']; ?>" name="url">
                             </div>
                         </div><br>
                         <div class="row">

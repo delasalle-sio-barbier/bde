@@ -9,8 +9,8 @@
                 <h1>Evenements<br></h1>
                 <?php
                 require 'include/connectbdd.php';
-                if (!empty($_GET['numEvenement'])) {
-                    $requete = 'SELECT * FROM evenement WHERE numEvenement = '.$_GET['numEvenement'];
+                if (!empty($_GET['url'])) {
+                    $requete = 'SELECT * FROM evenement WHERE url = '.$_GET['url'];
                     $req = $bdd->prepare($requete);
                     $req->execute();
                     $resultat = $req->fetch();
@@ -25,13 +25,14 @@
                     echo '</div>';
                 }else {
                     require 'include/connectbdd.php';
-                    $requete = 'SELECT numEvenement, titre, texte, lieu, dateDebut, dateFin FROM evenement ORDER BY numEvenement DESC';
+                    $requete = 'SELECT numEvenement, titre, texte, lieu, dateDebut, dateFin, url FROM evenement ORDER BY numEvenement DESC';
                     $req = $bdd->prepare($requete);
                     $req->execute();
                     while ($row = $req->fetch()) {
                         echo '<div class="tableauaccueil">';
                         echo '  <div style="float: left;">';
-                        echo '      <strong>' . $row['titre'] . '<br>Lieu : ' . $row['lieu'] . '</strong>';
+                        echo '      <strong><a href="agenda/' .$row['url'].'/">' . $row['titre'] . '</a></strong>';
+                        echo '      <br>Lieu : ' . $row['lieu'] . '</strong>';
                         echo '  </div>';
                         echo '  <div style="float: right;">';
                         echo '      <strong>Du ' . Outils::date_fr(strtotime($row['dateDebut'])) . '<br>au ' . Outils::date_fr(strtotime($row['dateFin'])) . '</strong>';
