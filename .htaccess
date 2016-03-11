@@ -9,4 +9,4 @@ RewriteRule mentions-legales/ mentionlegale.php
 
 RewriteRule galerie/([a-zA-Z0-9\-]+)/ galerie.php?url=$1
 RewriteRule article/([a-zA-Z0-9\-]+)/ actualite.php?url=$1
-RewriteRule agenda/([a-zA-Z0-9\-]+)/ evenement.php?numEvenement=$1
+RewriteRule agenda/([a-zA-Z0-9\-]+)/ evenement.php?url=$1

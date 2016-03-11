@@ -54,7 +54,7 @@ End Hero -->
                     while ($row = $req->fetch()) {
                         echo '<div class="tableauaccueil">';
                         echo '  <div style="float: left;">';
-                        echo '      <strong><a href="actualite.php?numActualite='.$row['numActualite'].'">' . $row['titre'] . '</a></strong>';
+                        echo '      <strong><a href="article/' .$row['url'].'/">' . $row['titre'] . '</a></strong>';
                         echo '  </div><br><hr>';
                         $chaine = $row['texte'];
                         $len = 250;
@@ -74,13 +74,13 @@ End Hero -->
                 <div class="lp-element">
                     <h1>Événements<br></h1>
                     <?php
-                    $requete = 'SELECT numEvenement, titre, texte, lieu, dateDebut, dateFin FROM evenement ORDER BY numEvenement DESC LIMIT 3';
+                    $requete = 'SELECT numEvenement, titre, texte, lieu, dateDebut, dateFin, url FROM evenement ORDER BY numEvenement DESC LIMIT 3';
                     $req = $bdd->prepare($requete);
                     $req->execute();
                     while ($row = $req->fetch()) {
                         echo '<div class="tableauaccueil">';
                         echo '  <div style="float: left;">';
-                        echo '      <strong>' . $row['titre'] . '<br>Lieu : '.$row['lieu'].'</strong>';
+                        echo '      <strong><a href="article/' .$row['url'].'/">' . $row['titre'] . '</a><br>Lieu : '.$row['lieu'].'</strong>';
                         echo '  </div>';
                         echo '  <div style="float: right;">';
                         echo '      <strong>Du ' . Outils::convertirEnDateFR(strtotime($row['dateDebut'])) . '<br>au '.Outils::convertirEnDateFR(strtotime($row['dateFin'])).'</strong>';
@@ -90,9 +90,9 @@ End Hero -->
 
                         if (strlen($chaine) >= $len) {
                             echo $chaine = substr($chaine,0,$len) . "..." ;
-                            echo '<p style="text-align: right;"><a href="evenement.php?numEvenement='.$row['numEvenement'].'">En savoir plus ››</a></p>';
+                            echo '<p style="text-align: right;"><a href="agenda/' .$row['url'].'/">En savoir plus ››</a></p>';
                         } else {
-                            echo $row['texte'];
+                            echo '<p style="text-align: right;"><a href="agenda/' .$row['url'].'/">En savoir plus ››</a></p>';
                         }
                         echo '</div>';
                     }

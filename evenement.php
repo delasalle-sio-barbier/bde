@@ -10,7 +10,8 @@
                 <?php
                 require 'include/connectbdd.php';
                 if (!empty($_GET['url'])) {
-                    $requete = 'SELECT * FROM evenement WHERE url = '.$_GET['url'];
+                    $url = $_GET['url'];
+                    $requete = "SELECT * FROM evenement WHERE url = '$url';";
                     $req = $bdd->prepare($requete);
                     $req->execute();
                     $resultat = $req->fetch();
@@ -23,9 +24,8 @@
                     echo '  </div><br><br><hr>';
                     echo $resultat['texte'];
                     echo '</div>';
-                }else {
-                    require 'include/connectbdd.php';
-                    $requete = 'SELECT numEvenement, titre, texte, lieu, dateDebut, dateFin, url FROM evenement ORDER BY numEvenement DESC';
+                }else{
+                    $requete = 'SELECT * FROM evenement';
                     $req = $bdd->prepare($requete);
                     $req->execute();
                     while ($row = $req->fetch()) {
@@ -41,10 +41,10 @@
                         $len = 200;
 
                         if (strlen($chaine) >= $len) {
-                            echo $chaine = substr($chaine, 0, $len) . "...";
-                            echo '<p style="text-align: right;"><a href="evenement.php?numEvenement=' . $row['numEvenement'] . '">En savoir plus ››</a></p>';
+                            echo $chaine = substr($chaine,0,$len) . "..." ;
+                            echo '<p style="text-align: right;"><a href="agenda/' .$row['url'].'/">En savoir plus ››</a></p>';
                         } else {
-                            echo $row['texte'];
+                            echo '<p style="text-align: right;"><a href="agenda/' .$row['url'].'/">En savoir plus ››</a></p>';
                         }
                         echo '</div>';
                     }
