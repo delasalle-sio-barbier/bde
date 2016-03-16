@@ -177,8 +177,16 @@
                 while ($row = $req->fetch()) {
                     echo '
                 <tr>
-                    <td>'.$row['titre'].'</td>
-                    <td>0 photos</td>
+                    <td>'.$row['titre'].'</td>';
+
+                    // Requete pour compter les photos
+                    $requete_photo = "SELECT count(*) as nb_photo FROM photo WHERE numAlbum = ".$row['numAlbum'];
+                    $req_photo = $bdd->prepare($requete_photo);
+                    $req_photo->execute();
+                    $photo = $req_photo->fetch();
+
+                    echo '
+                    <td>'.$photo['nb_photo'].' photos</td>
 
                     <td>'; ?>
                         <a href="gestiongalerie.php?action=ajoutphoto&id=<?php echo $row['numAlbum']; ?>" title="Ajouter des photos" style="color:green"><i class="fa fa-plus"></i></a>&nbsp;&nbsp;&nbsp;
