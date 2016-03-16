@@ -39,13 +39,8 @@
                         echo '  </div><br><br><hr>';
                         $chaine = $row['texte'];
                         $len = 200;
-
-                        if (strlen($chaine) >= $len) {
-                            echo $chaine = substr($chaine,0,$len) . "..." ;
-                            echo '<p style="text-align: right;"><a href="agenda/' .$row['url'].'/">En savoir plus ››</a></p>';
-                        } else {
-                            echo '<p style="text-align: right;"><a href="agenda/' .$row['url'].'/">En savoir plus ››</a></p>';
-                        }
+                        echo $chaine = substr($chaine,0,$len) . "..." ;
+                        echo '<p style="text-align: right;"><a href="agenda/' .$row['url'].'/">En savoir plus ››</a></p>';
                         echo '</div>';
                     }
                 }

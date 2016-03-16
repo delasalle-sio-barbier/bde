@@ -37,14 +37,9 @@
                         echo '      <strong>' . Outils::date_fr(strtotime($row['date']), 'l j F Y') . '</strong>';
                         echo '  </div><br><hr>';
                         $chaine = $row['texte'];
-                        $len = 250;
-
-                        if (strlen($chaine) >= $len) {
-                            echo $chaine = substr($chaine,0,$len) . "..." ;
-                            echo '<p style="text-align: right;"><a href="article/' .$row['url'].'/">En savoir plus ››</a></p>';
-                        } else {
-                            echo '<p style="text-align: right;"><a href="article/' .$row['url'].'/">En savoir plus ››</a></p>';
-                        }
+                        $len = 200;
+                        echo $chaine = substr($chaine,0,$len) . "..." ;
+                        echo '<p style="text-align: right;"><a href="article/' .$row['url'].'/">En savoir plus ››</a></p>';
                         echo '</div>';
                     }
                 }

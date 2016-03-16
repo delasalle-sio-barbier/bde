@@ -57,14 +57,9 @@ End Hero -->
                         echo '      <strong><a href="article/' .$row['url'].'/">' . $row['titre'] . '</a></strong>';
                         echo '  </div><br><hr>';
                         $chaine = $row['texte'];
-                        $len = 250;
-
-                        if (strlen($chaine) >= $len) {
-                            echo $chaine = substr($chaine,0,$len) . "..." ;
-                            echo '<p style="text-align: right;"><a href="article/' .$row['url'].'/">En savoir plus ››</a></p>';
-                        } else {
-                            echo '<p style="text-align: right;"><a href="article/' .$row['url'].'/">En savoir plus ››</a></p>';
-                        }
+                        $len = 100;
+                        echo $chaine = substr($chaine,0,$len) . "..." ;
+                        echo '<p style="text-align: right;"><a href="article/' .$row['url'].'/">En savoir plus ››</a></p>';
                         echo '</div>';
                     }
                     ?>
@@ -86,15 +81,10 @@ End Hero -->
                         echo '      <strong>Du ' . Outils::convertirEnDateFR(strtotime($row['dateDebut'])) . '<br>au '.Outils::convertirEnDateFR(strtotime($row['dateFin'])).'</strong>';
                         echo '  </div><br><br><hr>';
                         $chaine = $row['texte'];
-                        $len = 200;
-
-                        if (strlen($chaine) >= $len) {
-                            echo $chaine = substr($chaine,0,$len) . "..." ;
-                            echo '<p style="text-align: right;"><a href="agenda/' .$row['url'].'/">En savoir plus ››</a></p>';
-                        } else {
-                            echo $chaine;
-                            echo '<p style="text-align: right;"><a href="agenda/' .$row['url'].'/">En savoir plus ››</a></p>';
-                        }
+                        $len = 65;
+                        echo $chaine = substr($chaine,0,$len) . "..." ;
+                        echo '<p style="text-align: right;"><a href="agenda/' .$row['url'].'/">En savoir plus ››</a></p>';
+                        echo '</div>';
                         echo '</div>';
                     }
                     $req->closeCursor();

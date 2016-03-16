@@ -1,4 +1,7 @@
-<?php session_start(); ?>
+<?php session_start();
+ob_start();
+?>
+
 <html lang="fr">
     <head>
         <!-- Meta, title, CSS, favicons, etc. -->
